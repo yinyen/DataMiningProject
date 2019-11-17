@@ -1,0 +1,98 @@
+*------------------------------------------------------------*
+ Node = 9
+*------------------------------------------------------------*
+if genre_HistDocument IS ONE OF: 0 or MISSING
+AND Imputed ss_p25 < 0.875 or MISSING
+then 
+ Tree Node Identifier   = 9
+ Number of Observations = 1225
+ Predicted: audience_score_positive=True = 0.25
+ Predicted: audience_score_positive=False = 0.75
+ 
+*------------------------------------------------------------*
+ Node = 10
+*------------------------------------------------------------*
+if genre_Special Interest IS ONE OF: 1
+AND genre_HistDocument IS ONE OF: 1
+AND Imputed ss_p25 < 0.875 or MISSING
+then 
+ Tree Node Identifier   = 10
+ Number of Observations = 49
+ Predicted: audience_score_positive=True = 0.71
+ Predicted: audience_score_positive=False = 0.29
+ 
+*------------------------------------------------------------*
+ Node = 15
+*------------------------------------------------------------*
+if genre_Special Interest IS ONE OF: 0 or MISSING
+AND genre_MusicalPerfarts IS ONE OF: 1
+AND genre_HistDocument IS ONE OF: 1
+AND Imputed ss_p25 < 0.875 or MISSING
+then 
+ Tree Node Identifier   = 15
+ Number of Observations = 11
+ Predicted: audience_score_positive=True = 0.82
+ Predicted: audience_score_positive=False = 0.18
+ 
+*------------------------------------------------------------*
+ Node = 16
+*------------------------------------------------------------*
+if genre_Special Interest IS ONE OF: 0 or MISSING
+AND genre_MusicalPerfarts IS ONE OF: 0 or MISSING
+AND genre_HistDocument IS ONE OF: 1
+AND Imputed ss_p25 < 0.875 or MISSING
+then 
+ Tree Node Identifier   = 16
+ Number of Observations = 54
+ Predicted: audience_score_positive=True = 0.52
+ Predicted: audience_score_positive=False = 0.48
+ 
+*------------------------------------------------------------*
+ Node = 21
+*------------------------------------------------------------*
+if Imputed user_rating_count >= 548 or MISSING
+AND Imputed ss_p25 >= 0.875
+then 
+ Tree Node Identifier   = 21
+ Number of Observations = 631
+ Predicted: audience_score_positive=True = 0.81
+ Predicted: audience_score_positive=False = 0.19
+ 
+*------------------------------------------------------------*
+ Node = 23
+*------------------------------------------------------------*
+if genre_HistDocument IS ONE OF: 1
+AND Imputed user_rating_count < 548
+AND Imputed ss_p25 >= 0.875
+then 
+ Tree Node Identifier   = 23
+ Number of Observations = 172
+ Predicted: audience_score_positive=True = 0.69
+ Predicted: audience_score_positive=False = 0.31
+ 
+*------------------------------------------------------------*
+ Node = 24
+*------------------------------------------------------------*
+if genre_Horror IS ONE OF: 1
+AND genre_HistDocument IS ONE OF: 0 or MISSING
+AND Imputed user_rating_count < 548
+AND Imputed ss_p25 >= 0.875
+then 
+ Tree Node Identifier   = 24
+ Number of Observations = 21
+ Predicted: audience_score_positive=True = 0.24
+ Predicted: audience_score_positive=False = 0.76
+ 
+*------------------------------------------------------------*
+ Node = 25
+*------------------------------------------------------------*
+if genre_Horror IS ONE OF: 0 or MISSING
+AND genre_HistDocument IS ONE OF: 0 or MISSING
+AND Imputed user_rating_count < 548
+AND Imputed ss_p25 >= 0.875
+then 
+ Tree Node Identifier   = 25
+ Number of Observations = 275
+ Predicted: audience_score_positive=True = 0.53
+ Predicted: audience_score_positive=False = 0.47
+ 

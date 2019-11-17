@@ -1,0 +1,126 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+ Role        Level         Count
+
+TARGET      BINARY           1    
+ 
+                                                                                               
+ 
+ 
+
+
+
+
+
+
+
+Fit Statistics
+Model Selection based on Valid: Misclassification Rate (_VMISC_)
+
+                                                             Train:                      Valid:
+                                               Valid:       Average        Train:       Average
+Selected  Model                          Misclassification  Squared  Misclassification  Squared
+ Model    Node     Model Description            Rate         Error          Rate         Error
+
+   Y      Tree3  Decision Tree (Auto)         0.26844       0.17930       0.25554       0.19040
+          Tree   Decision Tree (Manual)       0.27705       0.19097       0.27276       0.19479
+ 
+                                                                                               
+ 
+ 
+
+
+
+
+
+
+
+Fit Statistics Table
+Target: audience_score_positive
+
+Data Role=Train
+
+Statistics                                                          Tree3       Tree
+
+Train: Bin-Based Two-Way Kolmogorov-Smirnov Probability Cutoff       0.53       0.53
+Train: Kolmogorov-Smirnov Statistic                                  0.49       0.45
+Train: Average Squared Error                                         0.18       0.19
+Train: Roc Index                                                     0.79       0.76
+Train: Cumulative Percent Captured Response                         16.95      16.96
+Train: Percent Captured Response                                     8.47       8.47
+Selection Criterion: Valid: Misclassification Rate                   0.27       0.28
+Train: Total Degrees of Freedom                                   2438.00    2438.00
+Train: Divisor for ASE                                            4876.00    4876.00
+Train: Gain                                                         69.35      69.47
+Train: Gini Coefficient                                              0.59       0.51
+Train: Bin-Based Two-Way Kolmogorov-Smirnov Statistic                0.49       0.45
+Train: Kolmogorov-Smirnov Probability Cutoff                         0.40       0.26
+Train: Cumulative Lift                                               1.69       1.69
+Train: Lift                                                          1.69       1.69
+Train: Maximum Absolute Error                                        0.84       0.82
+Train: Misclassification Rate                                        0.26       0.27
+Train: Sum of Frequencies                                         2438.00    2438.00
+Train: Root Average Squared Error                                    0.42       0.44
+Train: Cumulative Percent Response                                  80.51      80.57
+Train: Percent Response                                             80.51      80.51
+Train: Sum of Squared Errors                                       874.29     931.17
+
+
+Data Role=Valid
+
+Statistics                                                          Tree3       Tree
+
+Valid: Kolmogorov-Smirnov Statistic                                  0.47       0.44
+Valid: Average Squared Error                                         0.19       0.19
+Valid: Roc Index                                                     0.77       0.75
+Valid: Bin-Based Two-Way Kolmogorov-Smirnov Probability Cutoff       0.53       0.52
+Valid: Cumulative Percent Captured Response                         16.91      16.85
+Valid: Percent Captured Response                                     8.45       8.45
+Valid: Divisor for VASE                                           4880.00    4880.00
+Valid: Gain                                                         69.06      68.50
+Valid: Gini Coefficient                                              0.54       0.50
+Valid: Bin-Based Two-Way Kolmogorov-Smirnov Statistic                0.46       0.43
+Valid: Kolmogorov-Smirnov Probability Cutoff                         0.40       0.26
+Valid: Cumulative Lift                                               1.69       1.68
+Valid: Lift                                                          1.69       1.69
+Valid: Maximum Absolute Error                                        0.84       0.82
+Valid: Misclassification Rate                                        0.27       0.28
+Valid: Sum of Frequencies                                         2440.00    2440.00
+Valid: Root Average Squared Error                                    0.44       0.44
+Valid: Cumulative Percent Response                                  80.44      80.17
+Valid: Percent Response                                             80.44      80.44
+Valid: Sum of Squared Errors                                       929.13     950.59
+ 
+                                                                                               
+ 
+ 
+
+
+
+
+
+
+
+Event Classification Table
+Model Selection based on Valid: Misclassification Rate (_VMISC_)
+
+Model                              Data
+Node       Model Description       Role                Target
+
+Tree3    Decision Tree (Auto)      TRAIN       audience_score_positive
+Tree3    Decision Tree (Auto)      VALIDATE    audience_score_positive
+Tree     Decision Tree (Manual)    TRAIN       audience_score_positive
+Tree     Decision Tree (Manual)    VALIDATE    audience_score_positive
+
+Target      False       True        False       True
+Label     Negative    Negative    Positive    Positive
+
+             253         909         370         906  
+             283         907         372         878  
+             316         930         349         843  
+             341         944         335         820  

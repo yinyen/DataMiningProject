@@ -1,16 +1,16 @@
 *------------------------------------------------------------*
-User:                jy
-Date:                November 15, 2019
-Time:                23:44:54
+User:                yinyen
+Date:                November 16, 2019
+Time:                00:21:35
 Site:                12600285
-Platform:            X64_8PRO
+Platform:            X64_8HOME
 Maintenance Release: 9.04.01M3P062415
 EM Version:          14.1
 * 
 *------------------------------------------------------------*
 * Training Log
-Date:                November 15, 2019
-Time:                23:44:51
+Date:                November 16, 2019
+Time:                00:21:31
 *------------------------------------------------------------*
 10867  proc freq data=EMWS1.Part_VariableSet noprint;
 10868  table ROLE*LEVEL/out=WORK.PartMETA;
@@ -19,8 +19,8 @@ Time:                23:44:51
 NOTE: There were 44 observations read from the data set EMWS1.PART_VARIABLESET.
 NOTE: The data set WORK.PARTMETA has 6 observations and 4 variables.
 NOTE: PROCEDURE FREQ used (Total process time):
-      real time           0.20 seconds
-      cpu time            0.03 seconds
+      real time           0.16 seconds
+      cpu time            0.04 seconds
  
  
 10870  proc print data=WORK.PartMETA label noobs;
@@ -33,8 +33,8 @@ NOTE: PROCEDURE FREQ used (Total process time):
 NOTE: There were 6 observations read from the data set WORK.PARTMETA.
 NOTE: The PROCEDURE PRINT printed page 1.
 NOTE: PROCEDURE PRINT used (Total process time):
-      real time           0.03 seconds
-      cpu time            0.00 seconds
+      real time           0.02 seconds
+      cpu time            0.03 seconds
  
  
 10876  title10;
@@ -47,20 +47,20 @@ NOTE: PROCEDURE PRINT used (Total process time):
 10889  select count(*) into :_tmpa from EMWS1.FIMPORT_train
 10890  ;
 NOTE: View EMWS1.FIMPORT_TRAIN.VIEW used (Total process time):
-      real time           0.07 seconds
-      cpu time            0.06 seconds
+      real time           0.13 seconds
+      cpu time            0.09 seconds
  
 NOTE: There were 4878 observations read from the data set EMWS1.FIMPORT_DATA.
 10891  quit;
 NOTE: PROCEDURE SQL used (Total process time):
-      real time           0.10 seconds
-      cpu time            0.09 seconds
+      real time           0.19 seconds
+      cpu time            0.10 seconds
  
  
 trainPct=50 validatePct=50 testPct=0
 NOTE: View EMWS1.FIMPORT_TRAIN.VIEW used (Total process time):
-      real time           0.04 seconds
-      cpu time            0.04 seconds
+      real time           0.03 seconds
+      cpu time            0.03 seconds
  
 10892  *------------------------------------------------------------*;
 10893  * Part: Retrieving stratification variable(s) levels;
@@ -76,14 +76,14 @@ NOTE: View EMWS1.FIMPORT_TRAIN.VIEW used (Total process time):
  
 NOTE: View EMWS1.FIMPORT_TRAIN.VIEW used (Total process time):
       real time           0.06 seconds
-      cpu time            0.04 seconds
+      cpu time            0.03 seconds
  
 NOTE: There were 4878 observations read from the data set EMWS1.FIMPORT_DATA.
 NOTE: There were 4878 observations read from the data set EMWS1.FIMPORT_TRAIN.
 NOTE: The data set WORK.PART_FREQ has 2 observations and 2 variables.
 NOTE: PROCEDURE FREQ used (Total process time):
       real time           0.08 seconds
-      cpu time            0.06 seconds
+      cpu time            0.03 seconds
  
  
 10903  proc sort data=WORK.Part_FREQ;
@@ -108,7 +108,7 @@ NOTE: There were 2 observations read from the data set WORK.PART_FREQ.
 NOTE: The data set WORK.PART_FREQ2 has 2 observations and 1 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.01 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
  
  
 10911  *------------------------------------------------------------*;
@@ -157,16 +157,16 @@ NOTE: DATA statement used (Total process time):
 10954  run;
  
 NOTE: View EMWS1.FIMPORT_TRAIN.VIEW used (Total process time):
-      real time           0.04 seconds
-      cpu time            0.04 seconds
+      real time           0.06 seconds
+      cpu time            0.03 seconds
  
 NOTE: There were 4878 observations read from the data set EMWS1.FIMPORT_DATA.
 NOTE: There were 4878 observations read from the data set EMWS1.FIMPORT_TRAIN.
 NOTE: The data set EMWS1.PART_TRAIN has 2438 observations and 45 variables.
 NOTE: The data set EMWS1.PART_VALIDATE has 2440 observations and 45 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.07 seconds
-      cpu time            0.04 seconds
+      real time           0.11 seconds
+      cpu time            0.03 seconds
  
  
 10955  data _tempNobs;
@@ -188,8 +188,8 @@ NOTE: DATA statement used (Total process time):
  
 NOTE: The data set WORK._TEMPNOBS has 3 observations and 3 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.01 seconds
-      cpu time            0.01 seconds
+      real time           0.02 seconds
+      cpu time            0.00 seconds
  
  
 10971  %let _cn = %sysfunc(getoption(CENTER));
@@ -213,8 +213,8 @@ NOTE: PROCEDURE PRINT used (Total process time):
  
 *------------------------------------------------------------*
 * Score Log
-Date:                November 15, 2019
-Time:                23:44:52
+Date:                November 16, 2019
+Time:                00:21:33
 *------------------------------------------------------------*
 11082  *------------------------------------------------------------*;
 11083  * Part: Computing metadata for TRAIN data;
@@ -222,8 +222,8 @@ Time:                23:44:52
  
 *------------------------------------------------------------*
 * Report Log
-Date:                November 15, 2019
-Time:                23:44:53
+Date:                November 16, 2019
+Time:                00:21:34
 *------------------------------------------------------------*
 11458  *------------------------------------------------------------*;
 11459  * Part: Computing statistics for class target variables;
@@ -235,14 +235,14 @@ Time:                23:44:53
 11465  run;
  
 NOTE: View EMWS1.FIMPORT_TRAIN.VIEW used (Total process time):
-      real time           0.08 seconds
+      real time           0.09 seconds
       cpu time            0.06 seconds
  
 NOTE: There were 4878 observations read from the data set EMWS1.FIMPORT_DATA.
 NOTE: The data set WORK.TEMPFREQ has 2 observations and 8 variables.
 NOTE: There were 4878 observations read from the data set EMWS1.FIMPORT_TRAIN.
 NOTE: PROCEDURE FREQ used (Total process time):
-      real time           0.10 seconds
+      real time           0.12 seconds
       cpu time            0.07 seconds
  
  
@@ -274,7 +274,7 @@ NOTE: PROCEDURE FREQ used (Total process time):
  
 NOTE: The data set WORK.PART_BAR has 2 observations and 6 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.02 seconds
+      real time           0.03 seconds
       cpu time            0.01 seconds
  
  
@@ -286,22 +286,22 @@ NOTE: There were 2 observations read from the data set WORK.PART_BAR.
 NOTE: The data set WORK.PART_BAR has 2 observations and 6 variables.
 NOTE: PROCEDURE SORT used (Total process time):
       real time           0.01 seconds
-      cpu time            0.01 seconds
- 
- 
-11494  proc sort data=WORK.M198CKEA;
-11495  by Name;
-11496  run;
- 
-NOTE: There were 1 observations read from the data set WORK.M198CKEA.
-NOTE: The data set WORK.M198CKEA has 1 observations and 21 variables.
-NOTE: PROCEDURE SORT used (Total process time):
-      real time           0.00 seconds
       cpu time            0.00 seconds
  
  
+11494  proc sort data=WORK.M3MZ12CQ;
+11495  by Name;
+11496  run;
+ 
+NOTE: There were 1 observations read from the data set WORK.M3MZ12CQ.
+NOTE: The data set WORK.M3MZ12CQ has 1 observations and 21 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
 11497  data WORK.Part_BAR;
-11498  merge WORK.Part_BAR(in=_a) WORK.M198CKEA(keep=Name Label Role rename=(Name=_Variable_ Label=_Label_));
+11498  merge WORK.Part_BAR(in=_a) WORK.M3MZ12CQ(keep=Name Label Role rename=(Name=_Variable_ Label=_Label_));
 11499  by _Variable_;
 11500  label Role = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel ,  NOQUOTE))";
 11501  label Label = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel , NOQUOTE))";
@@ -311,11 +311,11 @@ NOTE: PROCEDURE SORT used (Total process time):
 NOTE: Variable Label is uninitialized.
 WARNING: Multiple lengths were specified for the BY variable _VARIABLE_ by input data sets. This might cause unexpected results.
 NOTE: There were 2 observations read from the data set WORK.PART_BAR.
-NOTE: There were 1 observations read from the data set WORK.M198CKEA.
+NOTE: There were 1 observations read from the data set WORK.M3MZ12CQ.
 NOTE: The data set WORK.PART_BAR has 2 observations and 8 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.01 seconds
-      cpu time            0.01 seconds
+      real time           0.02 seconds
+      cpu time            0.00 seconds
  
  
 11504  data EMWS1.Part_CLASS;
@@ -327,7 +327,7 @@ NOTE: DATA statement used (Total process time):
 NOTE: There were 2 observations read from the data set WORK.PART_BAR.
 NOTE: The data set EMWS1.PART_CLASS has 2 observations and 9 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.01 seconds
+      real time           0.02 seconds
       cpu time            0.00 seconds
  
  
@@ -346,7 +346,7 @@ NOTE: DATA statement used (Total process time):
 NOTE: The data set WORK.TEMPFREQ has 2 observations and 8 variables.
 NOTE: There were 2438 observations read from the data set EMWS1.PART_TRAIN.
 NOTE: PROCEDURE FREQ used (Total process time):
-      real time           0.02 seconds
+      real time           0.05 seconds
       cpu time            0.00 seconds
  
  
@@ -378,8 +378,8 @@ NOTE: PROCEDURE FREQ used (Total process time):
  
 NOTE: The data set WORK.PART_BAR has 2 observations and 6 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.02 seconds
-      cpu time            0.01 seconds
+      real time           0.03 seconds
+      cpu time            0.04 seconds
  
  
 11545  proc sort data=WORK.Part_BAR NOTHREADS;
@@ -393,7 +393,7 @@ NOTE: PROCEDURE SORT used (Total process time):
       cpu time            0.00 seconds
  
  
-11548  proc sort data=WORK.M198CKEA;
+11548  proc sort data=WORK.M3MZ12CQ;
 11549  by Name;
 11550  run;
  
@@ -404,7 +404,7 @@ NOTE: PROCEDURE SORT used (Total process time):
  
  
 11551  data WORK.Part_BAR;
-11552  merge WORK.Part_BAR(in=_a) WORK.M198CKEA(keep=Name Label Role rename=(Name=_Variable_ Label=_Label_));
+11552  merge WORK.Part_BAR(in=_a) WORK.M3MZ12CQ(keep=Name Label Role rename=(Name=_Variable_ Label=_Label_));
 11553  by _Variable_;
 11554  label Role = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel ,  NOQUOTE))";
 11555  label Label = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel , NOQUOTE))";
@@ -414,10 +414,10 @@ NOTE: PROCEDURE SORT used (Total process time):
 NOTE: Variable Label is uninitialized.
 WARNING: Multiple lengths were specified for the BY variable _VARIABLE_ by input data sets. This might cause unexpected results.
 NOTE: There were 2 observations read from the data set WORK.PART_BAR.
-NOTE: There were 1 observations read from the data set WORK.M198CKEA.
+NOTE: There were 1 observations read from the data set WORK.M3MZ12CQ.
 NOTE: The data set WORK.PART_BAR has 2 observations and 8 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.01 seconds
+      real time           0.02 seconds
       cpu time            0.01 seconds
  
  
@@ -430,8 +430,8 @@ NOTE: DATA statement used (Total process time):
 NOTE: There were 2 observations read from the data set WORK.PART_BAR.
 NOTE: The data set WORK.PART_BAR has 2 observations and 9 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.01 seconds
-      cpu time            0.00 seconds
+      real time           0.02 seconds
+      cpu time            0.01 seconds
  
  
 11563  data EMWS1.Part_CLASS;
@@ -442,7 +442,7 @@ NOTE: There were 2 observations read from the data set EMWS1.PART_CLASS.
 NOTE: There were 2 observations read from the data set WORK.PART_BAR.
 NOTE: The data set EMWS1.PART_CLASS has 4 observations and 9 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.01 seconds
+      real time           0.03 seconds
       cpu time            0.00 seconds
  
  
@@ -461,7 +461,7 @@ NOTE: DATA statement used (Total process time):
 NOTE: The data set WORK.TEMPFREQ has 2 observations and 8 variables.
 NOTE: There were 2440 observations read from the data set EMWS1.PART_VALIDATE.
 NOTE: PROCEDURE FREQ used (Total process time):
-      real time           0.03 seconds
+      real time           0.05 seconds
       cpu time            0.01 seconds
  
  
@@ -493,7 +493,7 @@ NOTE: PROCEDURE FREQ used (Total process time):
  
 NOTE: The data set WORK.PART_BAR has 2 observations and 6 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.02 seconds
+      real time           0.03 seconds
       cpu time            0.01 seconds
  
  
@@ -508,7 +508,7 @@ NOTE: PROCEDURE SORT used (Total process time):
       cpu time            0.00 seconds
  
  
-11605  proc sort data=WORK.M198CKEA;
+11605  proc sort data=WORK.M3MZ12CQ;
 11606  by Name;
 11607  run;
  
@@ -519,7 +519,7 @@ NOTE: PROCEDURE SORT used (Total process time):
  
  
 11608  data WORK.Part_BAR;
-11609  merge WORK.Part_BAR(in=_a) WORK.M198CKEA(keep=Name Label Role rename=(Name=_Variable_ Label=_Label_));
+11609  merge WORK.Part_BAR(in=_a) WORK.M3MZ12CQ(keep=Name Label Role rename=(Name=_Variable_ Label=_Label_));
 11610  by _Variable_;
 11611  label Role = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel ,  NOQUOTE))";
 11612  label Label = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel , NOQUOTE))";
@@ -529,10 +529,10 @@ NOTE: PROCEDURE SORT used (Total process time):
 NOTE: Variable Label is uninitialized.
 WARNING: Multiple lengths were specified for the BY variable _VARIABLE_ by input data sets. This might cause unexpected results.
 NOTE: There were 2 observations read from the data set WORK.PART_BAR.
-NOTE: There were 1 observations read from the data set WORK.M198CKEA.
+NOTE: There were 1 observations read from the data set WORK.M3MZ12CQ.
 NOTE: The data set WORK.PART_BAR has 2 observations and 8 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.01 seconds
+      real time           0.02 seconds
       cpu time            0.01 seconds
  
  
@@ -545,8 +545,8 @@ NOTE: DATA statement used (Total process time):
 NOTE: There were 2 observations read from the data set WORK.PART_BAR.
 NOTE: The data set WORK.PART_BAR has 2 observations and 9 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.01 seconds
-      cpu time            0.01 seconds
+      real time           0.02 seconds
+      cpu time            0.00 seconds
  
  
 11620  data EMWS1.Part_CLASS;
@@ -557,8 +557,8 @@ NOTE: There were 4 observations read from the data set EMWS1.PART_CLASS.
 NOTE: There were 2 observations read from the data set WORK.PART_BAR.
 NOTE: The data set EMWS1.PART_CLASS has 6 observations and 9 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.01 seconds
-      cpu time            0.01 seconds
+      real time           0.04 seconds
+      cpu time            0.03 seconds
  
  
 11623  *------------------------------------------------------------*;
@@ -573,7 +573,7 @@ NOTE: DATA statement used (Total process time):
 NOTE: There were 6 observations read from the data set EMWS1.PART_CLASS.
 NOTE: The data set EMWS1.PART_CLASS has 6 observations and 7 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.01 seconds
+      real time           0.02 seconds
       cpu time            0.01 seconds
  
  
@@ -584,8 +584,8 @@ NOTE: DATA statement used (Total process time):
 NOTE: There were 6 observations read from the data set EMWS1.PART_CLASS.
 NOTE: The data set EMWS1.PART_CLASS has 6 observations and 7 variables.
 NOTE: PROCEDURE SORT used (Total process time):
-      real time           0.01 seconds
-      cpu time            0.00 seconds
+      real time           0.02 seconds
+      cpu time            0.01 seconds
  
  
 11634  %let _cn = %sysfunc(getoption(CENTER));

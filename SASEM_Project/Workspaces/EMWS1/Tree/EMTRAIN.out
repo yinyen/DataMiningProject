@@ -1,0 +1,18 @@
+                                                            11:26 Sunday, November 17, 2019 129
+
+
+
+
+
+
+
+ 
+
+Obs NAME                   LABEL                     NRULES IMPORTANCE VIMPORTANCE  RATIO
+
+  1 IMP_ss_p25             Imputed ss_p25               1     1.00000    1.00000   1.00000
+  2 genre_HistDocument                                  2     0.41537    0.54610   1.31473
+  3 IMP_user_rating_count  Imputed user_rating_count    1     0.36917    0.42425   1.14920
+  4 genre_Horror                                        1     0.12377    0.18865   1.52422
+  5 genre_MusicalPerfarts                               1     0.08778    0.00000   0.00000
+  6 genre_Special_Interest genre_Special Interest       1     0.07429    0.00000   0.00000

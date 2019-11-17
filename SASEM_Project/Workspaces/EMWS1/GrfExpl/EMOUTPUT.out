@@ -1,7 +1,7 @@
 *------------------------------------------------------------*
-User:                jy
-Date:                November 03, 2019
-Time:                21:46:31
+User:                yinyen
+Date:                November 17, 2019
+Time:                14:35:48
 *------------------------------------------------------------*
 * Training Output
 *------------------------------------------------------------*
@@ -14,6 +14,7 @@ Variable Summary
             Measurement    Frequency
 Role           Level         Count
  
+ID           INTERVAL           1
 ID           NOMINAL            1
 INPUT        BINARY            25
 INPUT        INTERVAL          14

@@ -1,7 +1,7 @@
 *------------------------------------------------------------*
 * Report Log
 Date:                November 17, 2019
-Time:                16:11:33
+Time:                14:36:13
 *------------------------------------------------------------*
 36767  %let _nimpute = 0;
 36768  data EMWS1.Impt_RESULT;
@@ -17,8 +17,8 @@ NOTE: There were 13 observations read from the data set EMWS1.IMPT_META.
       WHERE IMPUTED not = ' ';
 NOTE: The data set EMWS1.IMPT_RESULT has 13 observations and 8 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.02 seconds
-      cpu time            0.00 seconds
+      real time           0.03 seconds
+      cpu time            0.03 seconds
       
 
 36775  proc print data=EMWS1.Impt_RESULT(obs=500) label noobs;
@@ -40,8 +40,8 @@ NOTE: PROCEDURE PRINT used (Total process time):
 NOTE: There were 13 observations read from the data set EMWS1.IMPT_RESULT.
 NOTE: The data set WORK.IMPTSUMMARY has 4 observations and 3 variables.
 NOTE: PROCEDURE FREQ used (Total process time):
-      real time           0.01 seconds
-      cpu time            0.00 seconds
+      real time           0.04 seconds
+      cpu time            0.01 seconds
       
 
 36782  proc sort data=WORK.ImptSUMMARY NOTHREADS;
@@ -51,7 +51,7 @@ NOTE: PROCEDURE FREQ used (Total process time):
 NOTE: There were 4 observations read from the data set WORK.IMPTSUMMARY.
 NOTE: The data set WORK.IMPTSUMMARY has 4 observations and 3 variables.
 NOTE: PROCEDURE SORT used (Total process time):
-      real time           0.00 seconds
+      real time           0.02 seconds
       cpu time            0.01 seconds
       
 
@@ -93,7 +93,7 @@ NOTE: Variable formula is uninitialized.
 NOTE: There were 40 observations read from the data set EMWS1.IMPT_META.
 NOTE: The data set EMWS1.IMPT_EMSCOREVAR has 54 observations and 3 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.01 seconds
+      real time           0.02 seconds
       cpu time            0.00 seconds
       
 
