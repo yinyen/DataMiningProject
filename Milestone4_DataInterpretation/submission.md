@@ -1,7 +1,7 @@
 ## Milestone 4 Submission:
 
 #### Video:  
-<https://www.youtube.com/>
+<https://youtu.be/1LtrV_rGYlw/>
 
 #### Report (pdf):   
 <https://github.com/yinyen/DataMiningProject/blob/master/Milestone4_DataInterpretation/wqd180108_milestone4.pdf>  
