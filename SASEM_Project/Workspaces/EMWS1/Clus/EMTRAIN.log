@@ -1,0 +1,411 @@
+*------------------------------------------------------------*
+* Training Log
+Date:                December 01, 2019
+Time:                16:11:53
+*------------------------------------------------------------*
+10867  proc freq data=EMWS1.Clus_VariableSet noprint;
+10868  table ROLE*LEVEL/out=WORK.ClusMETA;
+10869  run;
+
+NOTE: There were 44 observations read from the data set EMWS1.CLUS_VARIABLESET.
+NOTE: The data set WORK.CLUSMETA has 6 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.01 seconds
+      
+
+10870  proc print data=WORK.ClusMETA label noobs;
+10871  var ROLE LEVEL COUNT;
+10872  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+10873  title9 ' ';
+10874  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+10875  run;
+
+NOTE: There were 6 observations read from the data set WORK.CLUSMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+10876  title10;
+
+10877  data WORK.M0S4DFHK;
+10878  set WORK.M0S4DFHK;
+10879  if role eq 'REJECTED' then role = 'INPUT';
+10880  run;
+
+NOTE: There were 38 observations read from the data set WORK.M0S4DFHK.
+NOTE: The data set WORK.M0S4DFHK has 38 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+10889  *------------------------------------------------------------*;
+10890  * Clus: Preliminary Clustering;
+10891  *------------------------------------------------------------*;
+10892  *------------------------------------------------------------* ;
+10893  * Clus: DMDBClass Macro ;
+10894  *------------------------------------------------------------* ;
+10895  %macro DMDBClass;
+10896      G(ASC) IMP_markets_missing(ASC) NC17(ASC) NR(ASC) PG(ASC) PG_13(ASC) R(ASC)
+10897     genre_Action(ASC) genre_Adventure(ASC) genre_AnimationManga(ASC)
+10898     genre_ArthouseInter(ASC) genre_ClassicsCult(ASC) genre_Comedy(ASC)
+10899     genre_DramaTele(ASC) genre_FamilyKids(ASC) genre_Fantasy(ASC)
+10900     genre_FitnessSports(ASC) genre_HistDocument(ASC) genre_Horror(ASC)
+10901     genre_MusicalPerfarts(ASC) genre_Romance(ASC) genre_Sci_fi(ASC)
+10902     genre_Special_Interest(ASC) genre_ThrillMysSusp(ASC) genre_Western(ASC)
+10903  %mend DMDBClass;
+10904  *------------------------------------------------------------* ;
+10905  * Clus: DMDBVar Macro ;
+10906  *------------------------------------------------------------* ;
+10907  %macro DMDBVar;
+10908      IMP_domestic_gross IMP_domestic_opening IMP_foreign_gross IMP_runtime
+10909     IMP_ss_count IMP_ss_mean IMP_ss_median IMP_ss_p25 IMP_ss_p75 IMP_ss_std
+10910     IMP_total_gross IMP_user_rating_count tomatometer_count
+10911  %mend DMDBVar;
+10912  *------------------------------------------------------------*;
+10913  * Clus: Create DMDB;
+10914  *------------------------------------------------------------*;
+10915  proc dmdb batch data=EMWS1.Impt_TRAIN
+10916  dmdbcat=WORK.Clus_DMDB
+10917  maxlevel = 513
+10918  out=WORK.Clus_DMDB
+10919  ;
+10920  class %DMDBClass;
+10921  var %DMDBVar;
+10922  run;
+
+NOTE: Variable _WARN_ is uninitialized.
+NOTE: Records processed = 2438   Memory used = 511K.
+NOTE: There were 2438 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: View EMWS1.IMPT_TRAIN.VIEW used (Total process time):
+      real time           0.21 seconds
+      cpu time            0.12 seconds
+      
+NOTE: There were 2438 observations read from the data set EMWS1.GRFEXPL_TRAIN.
+NOTE: There were 2438 observations read from the data set EMWS1.IMPT_TRAIN.
+NOTE: The data set WORK.CLUS_DMDB has 2438 observations and 38 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.24 seconds
+      cpu time            0.14 seconds
+      
+
+10923  quit;
+10924  *--- end code ---*;
+
+10925  *------------------------------------------------------------* ;
+10926  * Clus: Interval Inputs Macro ;
+10927  *------------------------------------------------------------* ;
+10928  %macro DMVQINTERVAL;
+10929      IMP_domestic_gross IMP_domestic_opening IMP_foreign_gross IMP_runtime
+10930     IMP_ss_count IMP_ss_mean IMP_ss_median IMP_ss_p25 IMP_ss_p75 IMP_ss_std
+10931     IMP_total_gross IMP_user_rating_count tomatometer_count
+10932  %mend DMVQINTERVAL;
+10933  *------------------------------------------------------------* ;
+10934  * Clus: Nominal Inputs Macro ;
+10935  *------------------------------------------------------------* ;
+10936  %macro DMVQNOMINAL;
+10937      G IMP_markets_missing NC17 NR PG PG_13 R genre_Action genre_Adventure
+10938     genre_AnimationManga genre_ArthouseInter genre_ClassicsCult genre_Comedy
+10939     genre_DramaTele genre_FamilyKids genre_Fantasy genre_FitnessSports
+10940     genre_HistDocument genre_Horror genre_MusicalPerfarts genre_Romance
+10941     genre_Sci_fi genre_Special_Interest genre_ThrillMysSusp genre_Western
+10942  %mend DMVQNOMINAL;
+10943  *------------------------------------------------------------*;
+10944  * Clus: Run DMVQ procedure;
+10945  *------------------------------------------------------------*;
+10946  title;
+10947  options nodate;
+10948  proc dmvq data=WORK.Clus_DMDB dmdbcat=WORK.Clus_DMDB std=STD nominal=GLM ordinal=RANK
+10949  ;
+NOTE: The training set WORK.CLUS_DMDB.DATA has 38 variable(s).
+NOTE: The DMVQ statement has finished with return code=0 and status=begin.
+10950  input %DMVQINTERVAL / level=interval;
+NOTE: 13 input variable(s) defined for ID=I1.
+NOTE: The INPUT statement has finished with return code=0 and status=variables.
+10951  input %DMVQNOMINAL / level=nominal;
+NOTE: 25 input variable(s) defined for ID=I2.
+NOTE: The INPUT statement has finished with return code=0 and status=variables.
+10952  VQ maxc = 50 clusname=_SEGMENT_ CLUSLABEL="Segment Id" DISTLABEL="Distance";
+NOTE: A maximum of 50 clusters have been requested.
+NOTE: The VQ statement has finished with return code=0 and status=architecture.
+10953  MAKE outvar=EMWS1.Clus_OUTVAR;
+WARNING: Variable NC17 is omitted from the analysis because it has only one category.
+
+NOTE: 38 input variable(s).
+NOTE: Number of cases=2438
+NOTE: Sum of frequencies=2438
+NOTE: Sum of weights=2438
+NOTE: VARDEF=DF      
+NOTE: Maximum number of categories=2
+NOTE: The total number of variables is 38 with dimensionality 61.
+NOTE: 37 variables will be used for clustering.
+NOTE: Open output data set EMWS1.CLUS_OUTVAR.DATA with 63 variables.
+NOTE: The data set EMWS1.CLUS_OUTVAR has 4 observations and 63 variables.
+NOTE: The MAKE statement has finished with return code=0 and status=made.
+10954  INITIAL radius=0
+10955  ;
+NOTE: 50 seeds were selected from data set WORK.CLUS_DMDB.DATA using the SEPARATE algorithm.
+NOTE: The INITIAL statement has finished with return code=0 and status=initialized.
+10956  TRAIN tech=FORGY
+10957  ;
+WARNING: The limit of 10 iterations was reached without convergence.
+NOTE: The TRAIN statement has finished with return code=0 and status=trained.
+10958  SAVE outstat=WORK.Clus_OUTSTAT outmean=EMWS1.Clus_OUTMEAN;
+NOTE: The data set WORK.CLUS_OUTSTAT has 316 observations and 64 variables.
+NOTE: The data set EMWS1.CLUS_OUTMEAN has 50 observations and 70 variables.
+NOTE: The SAVE statement has finished with return code=0 and status=statistics.
+10959  code file="C:\Users\yinyen\Desktop\DataMiningProject3\SASEM_Project\Workspaces\EMWS1\Clus\DMVQSCORECODE.sas"
+10960  group=Clus
+10961  ;
+NOTE: External file C:\Users\yinyen\Desktop\DataMiningProject3\SASEM_Project\Workspaces\EMWS1\Clus\DMVQSCORECODE.sas opened.
+NOTE: The CODE statement has finished with return code=0 and status=statistics.
+10962  run;
+
+10963  quit;
+
+NOTE: There were 2438 observations read from the data set WORK.CLUS_DMDB.
+NOTE: PROCEDURE DMVQ used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.15 seconds
+      
+
+10964  proc transpose data=EMWS1.Clus_OUTVAR out=WORK.Clus_OUTVAR(where=(COL1 ^in('IMPUTED','OMITTED')));
+10965  var IMP_domestic_gross--genre_Western1;
+10966  where _TYPE_ in('TYPE' 'VARIABLE');
+10967  run;
+
+NOTE: There were 2 observations read from the data set EMWS1.CLUS_OUTVAR.
+      WHERE _TYPE_ in ('TYPE', 'VARIABLE');
+NOTE: The data set WORK.CLUS_OUTVAR has 61 observations and 4 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+10968  *------------------------------------------------------------* ;
+10969  * Clus: DMVQ Variables;
+10970  *------------------------------------------------------------* ;
+10971  %macro dmvqvars;
+10972      IMP_domestic_gross IMP_domestic_opening IMP_foreign_gross IMP_runtime
+10973     IMP_ss_count IMP_ss_mean IMP_ss_median IMP_ss_p25 IMP_ss_p75 IMP_ss_std
+10974     IMP_total_gross IMP_user_rating_count tomatometer_count G0 G1
+10975     IMP_markets_missing0 IMP_markets_missing1 NR0 NR1 PG0 PG1 PG_130 PG_131 R0 R1
+10976     genre_Action0 genre_Action1 genre_Adventure0 genre_Adventure1
+10977     genre_AnimationManga0 genre_AnimationManga1 genre_ArthouseInter0
+10978     genre_ArthouseInter1 genre_ClassicsCult0 genre_ClassicsCult1 genre_Comedy0
+10979     genre_Comedy1 genre_DramaTele0 genre_DramaTele1 genre_FamilyKids0
+10980     genre_FamilyKids1 genre_Fantasy0 genre_Fantasy1 genre_FitnessSports0
+10981     genre_FitnessSports1 genre_HistDocument0 genre_HistDocument1 genre_Horror0
+10982     genre_Horror1 genre_MusicalPerfarts0 genre_MusicalPerfarts1 genre_Romance0
+10983     genre_Romance1 genre_Sci_fi0 genre_Sci_fi1 genre_Special_Interest0
+10984     genre_Special_Interest1 genre_ThrillMysSusp0 genre_ThrillMysSusp1
+10985     genre_Western0 genre_Western1
+10986  %mend ;
+10987  
+10988  
+
+10989  *------------------------------------------------------------*;
+10990  * Clus: Determining the number of clusters;
+10991  *------------------------------------------------------------*;
+10992  proc cluster data=EMWS1.Clus_OUTMEAN method=WARD pseudo outtree=EMWS1.Clus_CLUSSEED
+10993  ;
+10994  var %dmvqvars;
+10995  copy _SEGMENT_;
+10996  run;
+
+NOTE: The data set EMWS1.CLUS_CLUSSEED has 99 observations and 78 variables.
+NOTE: The PROCEDURE CLUSTER printed page 2.
+NOTE: PROCEDURE CLUSTER used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.03 seconds
+      
+
+10997  quit;
+10998  proc sort data =EMWS1.Clus_CLUSSEED out=WORK._SEED_;
+10999  by _ncl_;
+11000  where (_ccc_ > -99999.0);
+11001  run;
+
+NOTE: There were 48 observations read from the data set EMWS1.CLUS_CLUSSEED.
+      WHERE _ccc_>-99999;
+NOTE: The data set WORK._SEED_ has 48 observations and 78 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+11002  data WORK._SEED2_;
+11003  retain oJump occc oncl;
+11004  set WORK._SEED_;
+11005  _lccc_=lag(_ccc_);
+11006  if _lccc_ > . then jump = _ccc_ - _lccc_;
+11007  if jump<0 and ojump>0 then do;
+11008  * Have a local Max;
+11009  numclus = oncl;
+11010  cccvalue = occc;
+11011  output;
+11012  end;
+11013  ojump = jump;
+11014  occc = _ccc_;
+11015  oncl = _ncl_;
+11016  run;
+
+NOTE: There were 48 observations read from the data set WORK._SEED_.
+NOTE: The data set WORK._SEED2_ has 2 observations and 85 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+11017  proc print data=WORK._SEED2_ label;
+11018  var numclus cccvalue;
+11019  label numclus="%sysfunc(sasmsg(sashelp.dmine, rpt_numclus_vlabel ,  NOQUOTE))";
+11020  label cccvalue="%sysfunc(sasmsg(sashelp.dmine, rpt_ccc_vlabel ,     NOQUOTE))";
+11021  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_OptClus_title, NOQUOTE))";
+11022  run;
+
+NOTE: There were 2 observations read from the data set WORK._SEED2_.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11023  title10;
+
+11024  data WORK._SEED2_;
+11025  length msg $200;
+11026  set WORK._SEED2_ end=eof;
+11027  retain select cccSelect 0 numSel;
+11028  if _N_=1 then numSel = numClus;
+11029  if cccvalue>=3 then do;
+11030  if 20>= numclus >= 2 and cccSelect<1 then do;
+11031  cccSelect = 1;
+11032  select =1;
+11033  numSel = numClus;
+11034  end;
+11035  end;
+11036  else if 20>= numclus >= 2 and select<1 then do;
+11037  select = 1;
+11038  numSel = numClus;
+11039  end;
+11040  if eof then do;
+11041  if ^(select=1 and cccselect=1) then do;
+11042  put "*------------------------------------------------------------*";
+11043  put '*;';
+11044  put "WARNING: The number of clusters selected based on the CCC values may not be valid.  Please refer to the documentation on the Cubic Clustering Criterion.";
+11045  put '*;';
+11046  put "*------------------------------------------------------------*";
+11047  end;
+11048  if select<1 then do;
+11049  msg = sasmsg('sashelp.dmine', 'rpt_noCCCclusternum_note', 'NOQUOTE');
+11050  put msg;
+11051  end;
+11052  if cccselect<1 then do;
+11053  msg = sasmsg('sashelp.dmine', 'rpt_noValidclusterNum_note', 'NOQUOTE');
+11054  put msg;
+11055  end;
+11056  call symput('em_maxC', strip(put(numSel,best.)));
+11057  end;
+11058  run;
+
+NOTE: There were 2 observations read from the data set WORK._SEED2_.
+NOTE: The data set WORK._SEED2_ has 2 observations and 89 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+11059  *------------------------------------------------------------*;
+11060  * Clus: Training;
+11061  *------------------------------------------------------------*;
+11062  *------------------------------------------------------------*;
+11063  * Clus: Run DMVQ procedure;
+11064  *------------------------------------------------------------*;
+11065  title;
+11066  options nodate;
+11067  proc dmvq data=WORK.Clus_DMDB dmdbcat=WORK.Clus_DMDB std=STD nominal=GLM ordinal=RANK
+11068  ;
+NOTE: The training set WORK.CLUS_DMDB.DATA has 38 variable(s).
+NOTE: The DMVQ statement has finished with return code=0 and status=begin.
+11069  input %DMVQINTERVAL / level=interval;
+NOTE: 13 input variable(s) defined for ID=I1.
+NOTE: The INPUT statement has finished with return code=0 and status=variables.
+11070  input %DMVQNOMINAL / level=nominal;
+NOTE: 25 input variable(s) defined for ID=I2.
+NOTE: The INPUT statement has finished with return code=0 and status=variables.
+11071  VQ maxc = 3 clusname=_SEGMENT_ CLUSLABEL="Segment Id" DISTLABEL="Distance";
+NOTE: A maximum of 3 clusters have been requested.
+NOTE: The VQ statement has finished with return code=0 and status=architecture.
+11072  MAKE outvar=EMWS1.Clus_OUTVAR;
+WARNING: Variable NC17 is omitted from the analysis because it has only one category.
+
+NOTE: 38 input variable(s).
+NOTE: Number of cases=2438
+NOTE: Sum of frequencies=2438
+NOTE: Sum of weights=2438
+NOTE: VARDEF=DF      
+NOTE: Maximum number of categories=2
+NOTE: The total number of variables is 38 with dimensionality 61.
+NOTE: 37 variables will be used for clustering.
+NOTE: Open output data set EMWS1.CLUS_OUTVAR.DATA with 63 variables.
+NOTE: The data set EMWS1.CLUS_OUTVAR has 4 observations and 63 variables.
+NOTE: The MAKE statement has finished with return code=0 and status=made.
+11073  INITIAL radius=0
+11074  ;
+NOTE: 3 seeds were selected from data set WORK.CLUS_DMDB.DATA using the SEPARATE algorithm.
+NOTE: The INITIAL statement has finished with return code=0 and status=initialized.
+11075  TRAIN tech=FORGY
+11076  ;
+WARNING: The limit of 10 iterations was reached without convergence.
+NOTE: The TRAIN statement has finished with return code=0 and status=trained.
+11077  SAVE outstat=EMWS1.Clus_OUTSTAT outmean=EMWS1.Clus_OUTMEAN;
+NOTE: The data set EMWS1.CLUS_OUTSTAT has 34 observations and 64 variables.
+NOTE: The data set EMWS1.CLUS_OUTMEAN has 3 observations and 70 variables.
+NOTE: The SAVE statement has finished with return code=0 and status=statistics.
+11078  code file="C:\Users\yinyen\Desktop\DataMiningProject3\SASEM_Project\Workspaces\EMWS1\Clus\DMVQSCORECODE.sas"
+11079  group=Clus
+11080  ;
+NOTE: External file C:\Users\yinyen\Desktop\DataMiningProject3\SASEM_Project\Workspaces\EMWS1\Clus\DMVQSCORECODE.sas opened.
+NOTE: The CODE statement has finished with return code=0 and status=statistics.
+11081  run;
+
+11082  quit;
+
+NOTE: There were 2438 observations read from the data set WORK.CLUS_DMDB.
+NOTE: PROCEDURE DMVQ used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.07 seconds
+      
+
+11083  libname _spdslib;
+WARNING: Libref _SPDSLIB is not assigned.
+
+11084  *------------------------------------------------------------*;
+11085  * Clus: Cluster Label;
+11086  *------------------------------------------------------------*;
+11087  data EMWS1.Clus_LABEL;
+11088  length _SEGMENT_ 8 Label $80;
+11089  format _SEGMENT_ 4.;
+11090  label _SEGMENT_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_segmentName_vlabel,  NOQUOTE))";
+11091  label Label = "%sysfunc(sasmsg(sashelp.dmine, rpt_segmentLabel_vlabel,  NOQUOTE))";
+11092  _SEGMENT_= 1;
+11093  Label='Cluster1';
+11094  output;
+11095  _SEGMENT_= 2;
+11096  Label='Cluster2';
+11097  output;
+11098  _SEGMENT_= 3;
+11099  Label='Cluster3';
+11100  output;
+11101  run;
+
+NOTE: The data set EMWS1.CLUS_LABEL has 3 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+

@@ -1,0 +1,126 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                December 01, 2019
+Time:                16:11:56
+*------------------------------------------------------------*
+11203  proc transpose data=EMWS1.Clus_OUTVAR out=WORK.Clus_OUTVAR(rename=(COl2=NAME) where=(COL1='IMPUTED'));
+11204  var IMP_domestic_gross--genre_Western1;
+11205  where _TYPE_ in('TYPE' 'VARIABLE');
+11206  run;
+
+NOTE: There were 2 observations read from the data set EMWS1.CLUS_OUTVAR.
+      WHERE _TYPE_ in ('TYPE', 'VARIABLE');
+NOTE: The data set WORK.CLUS_OUTVAR has 0 observations and 4 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.01 seconds
+      
+
+11207  proc sort data=WORK.Clus_OUTVAR;
+11208  by NAME;
+11209  run;
+
+NOTE: Input data set is empty.
+NOTE: The data set WORK.CLUS_OUTVAR has 0 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+11210  proc sort data=EMWS1.Clus_VariableSet(KEEP=NAME ROLE LEVEL) out=WORK.Clus_SORTEDVARS;
+11211  by NAME;
+11212  run;
+
+NOTE: There were 44 observations read from the data set EMWS1.CLUS_VARIABLESET.
+NOTE: The data set WORK.CLUS_SORTEDVARS has 44 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+      
+
+11213  data WORK.Clus_OUTVAR;
+11214  merge WORK.Clus_OUTVAR(in=INVAR) WORK.Clus_SORTEDVARS;
+11215  by NAME;
+11216  if INVAR then output;
+11217  run;
+
+WARNING: Multiple lengths were specified for the BY variable NAME by input data sets. This might cause unexpected results.
+NOTE: There were 0 observations read from the data set WORK.CLUS_OUTVAR.
+NOTE: There were 44 observations read from the data set WORK.CLUS_SORTEDVARS.
+NOTE: The data set WORK.CLUS_OUTVAR has 0 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+11218  filename emflow "C:\Users\yinyen\Desktop\DataMiningProject3\SASEM_Project\Workspaces\EMWS1\Clus\EMFLOWSCORE.sas";
+11219  *------------------------------------------------------------*;
+11220  * Clus: Scoring DATA data;
+11221  *------------------------------------------------------------*;
+11222  data EMWS1.Clus_TRAIN
+11223  / view=EMWS1.Clus_TRAIN
+11224  ;
+11225  set EMWS1.Impt_TRAIN
+11226  ;
+11227  %inc emflow;
+12319  run;
+
+NOTE: DATA STEP view saved on file EMWS1.CLUS_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.IMPT_TRAIN.VIEW used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.14 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.17 seconds
+      
+
+12320  quit;
+12321  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+12322  filename emflow "C:\Users\yinyen\Desktop\DataMiningProject3\SASEM_Project\Workspaces\EMWS1\Clus\EMFLOWSCORE.sas";
+12323  *------------------------------------------------------------*;
+12324  * Clus: Scoring VALIDATE data;
+12325  *------------------------------------------------------------*;
+12326  data EMWS1.Clus_VALIDATE
+12327  / view=EMWS1.Clus_VALIDATE
+12328  ;
+12329  set EMWS1.Impt_VALIDATE
+12330  ;
+12331  %inc emflow;
+13423  run;
+
+NOTE: DATA STEP view saved on file EMWS1.CLUS_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.IMPT_VALIDATE.VIEW used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.07 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.19 seconds
+      cpu time            0.11 seconds
+      
+
+13424  quit;
+13425  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+13426  *------------------------------------------------------------*;
+13427  * Clus: Computing metadata for TRAIN data;
+13428  *------------------------------------------------------------*;
+
+NOTE: View EMWS1.CLUS_TRAIN.VIEW used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.18 seconds
+      
+NOTE: View EMWS1.CLUS_TRAIN.VIEW used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.17 seconds
+      
+NOTE: View EMWS1.CLUS_VALIDATE.VIEW used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.15 seconds
+      
