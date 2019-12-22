@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  NumberOfReportedLevels="1E-6" NormalizeReportingVariables="Y" DecileBin="20" LiftEpsilon="1E-6"
+ ProfitEpsilon="1E-6" RoiEpsilon="1E-6" ScoreDistBin="20" RocChart="Y" RocEpsilon="0.01"
+ AssessAllTargetLevels="N" SelectionData="DEFAULT" HPCriteria="DEFAULT" SelectionTable="TRAIN"
+ SelectionCriteria="DEFAULT" SelectionDepth="10" NumberofBins="20" RecomputeAssess="N"
+ TargetName="audience_score_positive" ModelId="Reg2" ModelDescription="Regression (2)"
+ ModelCriteria="Valid: Misclassification Rate" ForceRun="N" RunAction="Train" Component="ModelCompare"
+ RawCreateTime="1892600395.1" CreateTime="22DEC2019:02:19:55" RunId="b77603d3-0cf8-418f-bbb5-3fd5fbee3389"
+ StatisticUsed="_VMISC_" TargetLabel="" RawLastTimeRun="1892651153.1" RawRunTime="23.789999962"
+ LastTimeRun="22DEC2019:16:25:53" RunTime="0 Hr. 0 Min. 23.79 Sec.">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>

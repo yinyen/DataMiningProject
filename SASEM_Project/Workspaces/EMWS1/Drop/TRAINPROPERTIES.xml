@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  DropFromTable="N" DropHidden="Y" DropInput="N" DropTarget="N" DropRejected="Y" DropAssess="N"
+ DropPredict="N" DropFreq="N" DropClassification="N" DropResidual="N" DropOther="N"
+ ForceRun="N" RunAction="Train" Component="Drop" RawCreateTime="1892599863.7" CreateTime="22DEC2019:02:11:04"
+ RunId="3b9e11ac-d3ff-49dc-af7f-3883b5e95a81" RawLastTimeRun="1892650839.9" RawRunTime="12.536000013"
+ LastTimeRun="22DEC2019:16:20:40" RunTime="0 Hr. 0 Min. 12.54 Sec.">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>

@@ -1,98 +1,70 @@
 *------------------------------------------------------------*
- Node = 9
+ Node = 62
 *------------------------------------------------------------*
-if genre_HistDocument IS ONE OF: 0 or MISSING
-AND Imputed ss_p25 < 0.875 or MISSING
+if tomatometer_count >= 19 or MISSING
+AND Imputed ss_mean >= 0.77
 then 
- Tree Node Identifier   = 9
- Number of Observations = 1225
- Predicted: audience_score_positive=True = 0.25
- Predicted: audience_score_positive=False = 0.75
- 
-*------------------------------------------------------------*
- Node = 10
-*------------------------------------------------------------*
-if genre_Special Interest IS ONE OF: 1
-AND genre_HistDocument IS ONE OF: 1
-AND Imputed ss_p25 < 0.875 or MISSING
-then 
- Tree Node Identifier   = 10
- Number of Observations = 49
- Predicted: audience_score_positive=True = 0.71
- Predicted: audience_score_positive=False = 0.29
- 
-*------------------------------------------------------------*
- Node = 15
-*------------------------------------------------------------*
-if genre_Special Interest IS ONE OF: 0 or MISSING
-AND genre_MusicalPerfarts IS ONE OF: 1
-AND genre_HistDocument IS ONE OF: 1
-AND Imputed ss_p25 < 0.875 or MISSING
-then 
- Tree Node Identifier   = 15
- Number of Observations = 11
- Predicted: audience_score_positive=True = 0.82
- Predicted: audience_score_positive=False = 0.18
- 
-*------------------------------------------------------------*
- Node = 16
-*------------------------------------------------------------*
-if genre_Special Interest IS ONE OF: 0 or MISSING
-AND genre_MusicalPerfarts IS ONE OF: 0 or MISSING
-AND genre_HistDocument IS ONE OF: 1
-AND Imputed ss_p25 < 0.875 or MISSING
-then 
- Tree Node Identifier   = 16
- Number of Observations = 54
- Predicted: audience_score_positive=True = 0.52
- Predicted: audience_score_positive=False = 0.48
- 
-*------------------------------------------------------------*
- Node = 21
-*------------------------------------------------------------*
-if Imputed user_rating_count >= 548 or MISSING
-AND Imputed ss_p25 >= 0.875
-then 
- Tree Node Identifier   = 21
- Number of Observations = 631
+ Tree Node Identifier   = 62
+ Number of Observations = 658
  Predicted: audience_score_positive=True = 0.81
  Predicted: audience_score_positive=False = 0.19
  
 *------------------------------------------------------------*
- Node = 23
+ Node = 73
 *------------------------------------------------------------*
-if genre_HistDocument IS ONE OF: 1
-AND Imputed user_rating_count < 548
-AND Imputed ss_p25 >= 0.875
+if tomatometer_count < 19
+AND Imputed user_rating_count < 390 or MISSING
+AND Imputed ss_mean >= 0.77
 then 
- Tree Node Identifier   = 23
- Number of Observations = 172
- Predicted: audience_score_positive=True = 0.69
- Predicted: audience_score_positive=False = 0.31
+ Tree Node Identifier   = 73
+ Number of Observations = 272
+ Predicted: audience_score_positive=True = 0.50
+ Predicted: audience_score_positive=False = 0.50
  
 *------------------------------------------------------------*
- Node = 24
+ Node = 74
 *------------------------------------------------------------*
-if genre_Horror IS ONE OF: 1
-AND genre_HistDocument IS ONE OF: 0 or MISSING
-AND Imputed user_rating_count < 548
-AND Imputed ss_p25 >= 0.875
+if tomatometer_count < 19
+AND Imputed user_rating_count >= 390
+AND Imputed ss_mean >= 0.77
 then 
- Tree Node Identifier   = 24
- Number of Observations = 21
- Predicted: audience_score_positive=True = 0.24
- Predicted: audience_score_positive=False = 0.76
+ Tree Node Identifier   = 74
+ Number of Observations = 85
+ Predicted: audience_score_positive=True = 0.73
+ Predicted: audience_score_positive=False = 0.27
  
 *------------------------------------------------------------*
- Node = 25
+ Node = 84
 *------------------------------------------------------------*
-if genre_Horror IS ONE OF: 0 or MISSING
-AND genre_HistDocument IS ONE OF: 0 or MISSING
-AND Imputed user_rating_count < 548
-AND Imputed ss_p25 >= 0.875
+if Imputed ss_mean < 0.77 or MISSING
+AND Imputed runtime < 102 or MISSING
 then 
- Tree Node Identifier   = 25
- Number of Observations = 275
- Predicted: audience_score_positive=True = 0.53
- Predicted: audience_score_positive=False = 0.47
+ Tree Node Identifier   = 84
+ Number of Observations = 898
+ Predicted: audience_score_positive=True = 0.23
+ Predicted: audience_score_positive=False = 0.77
+ 
+*------------------------------------------------------------*
+ Node = 86
+*------------------------------------------------------------*
+if Imputed user_rating_count < 149650 or MISSING
+AND Imputed ss_mean < 0.77 or MISSING
+AND Imputed runtime >= 102
+then 
+ Tree Node Identifier   = 86
+ Number of Observations = 512
+ Predicted: audience_score_positive=True = 0.40
+ Predicted: audience_score_positive=False = 0.60
+ 
+*------------------------------------------------------------*
+ Node = 87
+*------------------------------------------------------------*
+if Imputed user_rating_count >= 149650
+AND Imputed ss_mean < 0.77 or MISSING
+AND Imputed runtime >= 102
+then 
+ Tree Node Identifier   = 87
+ Number of Observations = 13
+ Predicted: audience_score_positive=True = 1.00
+ Predicted: audience_score_positive=False = 0.00
  

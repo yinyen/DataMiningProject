@@ -1,0 +1,46 @@
+*------------------------------------------------------------*
+User:                yinyen
+Date:                December 22, 2019
+Time:                16:20:52
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ASSESS       NOMINAL            1
+ID           INTERVAL           1
+ID           NOMINAL            1
+INPUT        BINARY            25
+INPUT        INTERVAL          13
+REJECTED     BINARY             1
+REJECTED     INTERVAL           3
+TARGET       BINARY             1
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Dropped Variables Summary
+ 
+ROLE         LEVEL      COUNT
+ 
+HIDDEN                    13
+INPUT       INTERVAL       8
+REJECTED    BINARY         1
+REJECTED    INTERVAL       3
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

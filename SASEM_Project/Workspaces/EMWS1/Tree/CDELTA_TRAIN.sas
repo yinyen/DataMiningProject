@@ -42,11 +42,27 @@ if upcase(NAME) = "GENRE_FITNESSSPORTS" then do;
 ROLE = "REJECTED";
 end;
 else 
+if upcase(NAME) = "GENRE_HISTDOCUMENT" then do;
+ROLE = "REJECTED";
+end;
+else 
+if upcase(NAME) = "GENRE_HORROR" then do;
+ROLE = "REJECTED";
+end;
+else 
+if upcase(NAME) = "GENRE_MUSICALPERFARTS" then do;
+ROLE = "REJECTED";
+end;
+else 
 if upcase(NAME) = "GENRE_ROMANCE" then do;
 ROLE = "REJECTED";
 end;
 else 
 if upcase(NAME) = "GENRE_SCI_FI" then do;
+ROLE = "REJECTED";
+end;
+else 
+if upcase(NAME) = "GENRE_SPECIAL_INTEREST" then do;
 ROLE = "REJECTED";
 end;
 else 
@@ -74,19 +90,15 @@ if upcase(NAME) = "IMP_MARKETS_MISSING" then do;
 ROLE = "REJECTED";
 end;
 else 
-if upcase(NAME) = "IMP_RUNTIME" then do;
-ROLE = "REJECTED";
-end;
-else 
 if upcase(NAME) = "IMP_SS_COUNT" then do;
 ROLE = "REJECTED";
 end;
 else 
-if upcase(NAME) = "IMP_SS_MEAN" then do;
+if upcase(NAME) = "IMP_SS_MEDIAN" then do;
 ROLE = "REJECTED";
 end;
 else 
-if upcase(NAME) = "IMP_SS_MEDIAN" then do;
+if upcase(NAME) = "IMP_SS_P25" then do;
 ROLE = "REJECTED";
 end;
 else 
@@ -127,10 +139,6 @@ ROLE = "ASSESS";
 end;
 else 
 if upcase(NAME) = "R" then do;
-ROLE = "REJECTED";
-end;
-else 
-if upcase(NAME) = "TOMATOMETER_COUNT" then do;
 ROLE = "REJECTED";
 end;
 else 

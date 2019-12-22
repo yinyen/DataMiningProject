@@ -9,7 +9,7 @@
 data workspace;
 length property $64 value $100;
 property= 'PROJECTLOCATION';
-value= "D:\DataMiningProject";
+value= "C:\Users\yinyen\Desktop\DataMiningProject3";
 output;
 property= 'PROJECTNAME';
 value= "SASEM_Project";

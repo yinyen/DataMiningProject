@@ -1,0 +1,1645 @@
+*------------------------------------------------------------*
+User:                yinyen
+Date:                December 22, 2019
+Time:                16:21:15
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+INPUT      BINARY            25
+INPUT      INTERVAL           5
+TARGET     BINARY             1
+ 
+ 
+ 
+ 
+Model Events
+ 
+                                                   Number
+                                    Measurement      of
+        Target             Event       Level       Levels      Order       Label
+ 
+audience_score_positive    TRUE       BINARY          2      Descending
+ 
+ 
+ 
+ 
+Predicted and decision variables
+ 
+Type                    Variable                                Label
+ 
+TARGET       audience_score_positive
+PREDICTED    P_audience_score_positiveTrue     Predicted: audience_score_positive=True
+RESIDUAL     R_audience_score_positiveTrue     Residual: audience_score_positive=True
+PREDICTED    P_audience_score_positiveFalse    Predicted: audience_score_positive=False
+RESIDUAL     R_audience_score_positiveFalse    Residual: audience_score_positive=False
+FROM         F_audience_score_positive         From: audience_score_positive
+INTO         I_audience_score_positive         Into: audience_score_positive
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+                  Model Information
+ 
+Training Data Set              WORK.EM_DMREG.VIEW
+DMDB Catalog                   WORK.REG2_DMDB
+Target Variable                audience_score_positive
+Target Measurement Level       Ordinal
+Number of Target Categories    2
+Error                          MBernoulli
+Link Function                  Logit
+Number of Model Parameters     30
+Number of Observations         2438
+ 
+ 
+           Target Profile
+ 
+             audience_
+ Ordered     score_            Total
+   Value     positive      Frequency
+ 
+       1     True               1159
+       2     False              1279
+ 
+ 
+ 
+ 
+Stepwise Selection Procedure
+ 
+ 
+Step 0: Intercept entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates               1
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 2.426503E-12
+ 
+                                            Optimization Results
+ 
+Iterations                                          0  Function Calls                                      3
+Hessian Calls                                       1  Active Constraints                                  0
+Objective Function                       1686.9383922  Max Abs Gradient Element                 2.426503E-12
+Ridge                                               0  Actual Over Pred Change                             0
+ 
+Convergence criterion (ABSGCONV=0.00001) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        3373.877         0.0000        0          .
+ 
+ 
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -0.0985      0.0406          5.90        0.0151                       0.906
+ 
+ 
+ 
+ 
+Step 1: Effect IMP_ss_mean entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates               2
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 180.41881064
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             1448        238.6     22.2231         0        1.085
+   2            0           3              0             1439       9.2389      2.6011         0        1.062
+   3            0           4              0             1439       0.0893      0.0321         0        1.007
+   4            0           5              0             1439     0.000011    4.228E-6         0        1.000
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1439.0457862  Max Abs Gradient Element                 4.2276109E-6
+Ridge                                               0  Actual Over Pred Change                    1.00008406
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2878.092       495.7852        1         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_ss_mean                  1      366.3529        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -4.5135      0.2391        356.30        <.0001                       0.011
+IMP_ss_mean                  1      6.1900      0.3234        366.35        <.0001          0.5956     487.834
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_ss_mean                       487.834
+ 
+ 
+Step 2: Effect tomatometer_count entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates               3
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 180.41881064
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             1408        279.1     30.9440         0        1.095
+   2            0           3              0             1394      13.7265      3.9302         0        1.076
+   3            0           4              0             1394       0.2048      0.0719         0        1.011
+   4            0           5              0             1394     0.000062    0.000023         0        1.000
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1393.9457381  Max Abs Gradient Element                 0.0000227746
+Ridge                                               0  Actual Over Pred Change                  1.0002060847
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2787.891       585.9853        2         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_ss_mean                  1      353.7241        <.0001
+tomatometer_count            1       79.1364        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -4.8825      0.2502        380.74        <.0001                       0.008
+IMP_ss_mean                  1      6.1908      0.3292        353.72        <.0001          0.5957     488.246
+tomatometer_count            1     0.00543    0.000611         79.14        <.0001          0.2518       1.005
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_ss_mean                       488.246
+tomatometer_count                   1.005
+ 
+ 
+Step 3: Effect genre_HistDocument entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates               4
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 201.49138638
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             1375        311.7     36.1208         0        1.092
+   2            0           3              0             1360      14.9097      4.2243         0        1.078
+   3            0           4              0             1360       0.2405      0.0800         0        1.013
+   4            0           5              0             1360     0.000088    0.000031         0        1.000
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1360.0630661  Max Abs Gradient Element                 0.0000313419
+Ridge                                               0  Actual Over Pred Change                  1.0002496737
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2720.126       653.7507        3         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_ss_mean                  1      282.8911        <.0001
+genre_HistDocument           1       63.6648        <.0001
+tomatometer_count            1      105.2030        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -4.1816      0.2621        254.52        <.0001                       0.015
+IMP_ss_mean                  1      5.6295      0.3347        282.89        <.0001          0.5417     278.512
+genre_HistDocument     0     1     -0.5371      0.0673         63.66        <.0001                       0.584
+tomatometer_count            1     0.00645    0.000629        105.20        <.0001          0.2991       1.006
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_ss_mean                       278.512
+genre_HistDocument     0 vs 1       0.342
+tomatometer_count                   1.006
+ 
+ 
+Step 4: Effect IMP_runtime entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates               5
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 201.49138638
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             1361        326.4     37.7142         0        1.095
+   2            0           3              0             1344      16.8403      4.6126         0        1.082
+   3            0           4              0             1343       0.3030      0.0988         0        1.014
+   4            0           5              0             1343     0.000140    0.000047         0        1.000
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1343.4225045  Max Abs Gradient Element                 0.0000474193
+Ridge                                               0  Actual Over Pred Change                  1.0003179598
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2686.845       687.0318        4         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_runtime                  1       29.6744        <.0001
+IMP_ss_mean                  1      278.4674        <.0001
+genre_HistDocument           1       73.1697        <.0001
+tomatometer_count            1       56.0412        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -5.7855      0.3994        209.79        <.0001                       0.003
+IMP_runtime                  1      0.0173     0.00317         29.67        <.0001          0.1782       1.017
+IMP_ss_mean                  1      5.6423      0.3381        278.47        <.0001          0.5429     282.097
+genre_HistDocument     0     1     -0.5899      0.0690         73.17        <.0001                       0.554
+tomatometer_count            1     0.00506    0.000675         56.04        <.0001          0.2343       1.005
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_runtime                         1.017
+IMP_ss_mean                       282.097
+genre_HistDocument     0 vs 1       0.307
+tomatometer_count                   1.005
+ 
+ 
+Step 5: Effect genre_DramaTele entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates               6
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 201.49138638
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             1353        334.2     38.3699         0        1.095
+   2            0           3              0             1335      17.4451      4.8304         0        1.084
+   3            0           4              0             1335       0.3290      0.1097         0        1.015
+   4            0           5              0             1335     0.000167    0.000059         0        1.000
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1334.9357275  Max Abs Gradient Element                 0.0000586884
+Ridge                                               0  Actual Over Pred Change                  1.0003503972
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2669.871       704.0053        5         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_runtime                  1       20.8148        <.0001
+IMP_ss_mean                  1      253.1289        <.0001
+genre_DramaTele              1       16.8717        <.0001
+genre_HistDocument           1       89.3354        <.0001
+tomatometer_count            1       60.6821        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -5.3269      0.4120        167.19        <.0001                       0.005
+IMP_runtime                  1      0.0147     0.00322         20.81        <.0001          0.1514       1.015
+IMP_ss_mean                  1      5.4337      0.3415        253.13        <.0001          0.5228     228.996
+genre_DramaTele        0     1     -0.2154      0.0524         16.87        <.0001                       0.806
+genre_HistDocument     0     1     -0.6992      0.0740         89.34        <.0001                       0.497
+tomatometer_count            1     0.00529    0.000680         60.68        <.0001          0.2453       1.005
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_runtime                         1.015
+IMP_ss_mean                       228.996
+genre_DramaTele        0 vs 1       0.650
+genre_HistDocument     0 vs 1       0.247
+tomatometer_count                   1.005
+ 
+ 
+Step 6: Effect R entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates               7
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 201.49138638
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             1346        341.4     38.8352         0        1.098
+   2            0           3              0             1327      19.0335      5.0797         0        1.088
+   3            0           4              0             1326       0.4012      0.1278         0        1.017
+   4            0           5              0             1326     0.000257    0.000089         0        1.000
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1326.1143965  Max Abs Gradient Element                  0.000089366
+Ridge                                               0  Actual Over Pred Change                  1.0004425936
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2652.229       721.6480        6         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_runtime                  1       20.4696        <.0001
+IMP_ss_mean                  1      237.3448        <.0001
+R                            1       17.4189        <.0001
+genre_DramaTele              1       19.0976        <.0001
+genre_HistDocument           1       79.9376        <.0001
+tomatometer_count            1       69.5926        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -5.3728      0.4140        168.41        <.0001                       0.005
+IMP_runtime                  1      0.0146     0.00322         20.47        <.0001          0.1506       1.015
+IMP_ss_mean                  1      5.2952      0.3437        237.34        <.0001          0.5095     199.371
+R                      0     1      0.2282      0.0547         17.42        <.0001                       1.256
+genre_DramaTele        0     1     -0.2312      0.0529         19.10        <.0001                       0.794
+genre_HistDocument     0     1     -0.6650      0.0744         79.94        <.0001                       0.514
+tomatometer_count            1     0.00589    0.000707         69.59        <.0001          0.2731       1.006
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_runtime                         1.015
+IMP_ss_mean                       199.371
+R                      0 vs 1       1.578
+genre_DramaTele        0 vs 1       0.630
+genre_HistDocument     0 vs 1       0.264
+tomatometer_count                   1.006
+ 
+ 
+Step 7: Effect genre_AnimationManga entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates               8
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 201.49138638
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             1340        347.1     38.9464         0        1.098
+   2            0           3              0             1320      19.6666      5.1461         0        1.089
+   3            0           4              0             1320       0.4273      0.1340         0        1.017
+   4            0           5              0             1320     0.000293    0.000100         0        1.000
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1319.7740102  Max Abs Gradient Element                 0.0001001415
+Ridge                                               0  Actual Over Pred Change                   1.000474529
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2639.548       734.3288        7         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_runtime                  1       24.2906        <.0001
+IMP_ss_mean                  1      227.5618        <.0001
+R                            1       13.4037        0.0003
+genre_AnimationManga         1       12.2127        0.0005
+genre_DramaTele              1       24.3132        <.0001
+genre_HistDocument           1       88.3608        <.0001
+tomatometer_count            1       62.1985        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -4.9674      0.4294        133.82        <.0001                       0.007
+IMP_runtime                  1      0.0162     0.00328         24.29        <.0001          0.1670       1.016
+IMP_ss_mean                  1      5.2055      0.3451        227.56        <.0001          0.5009     182.281
+R                      0     1      0.2021      0.0552         13.40        0.0003                       1.224
+genre_AnimationManga   0     1     -0.4726      0.1352         12.21        0.0005                       0.623
+genre_DramaTele        0     1     -0.2670      0.0542         24.31        <.0001                       0.766
+genre_HistDocument     0     1     -0.7151      0.0761         88.36        <.0001                       0.489
+tomatometer_count            1     0.00561    0.000711         62.20        <.0001          0.2599       1.006
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_runtime                         1.016
+IMP_ss_mean                       182.281
+R                      0 vs 1       1.498
+genre_AnimationManga   0 vs 1       0.389
+genre_DramaTele        0 vs 1       0.586
+genre_HistDocument     0 vs 1       0.239
+tomatometer_count                   1.006
+ 
+ 
+Step 8: Effect genre_FitnessSports entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates               9
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 201.49138638
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             1337        350.4     39.4116         0        1.100
+   2            0           3              0             1316      20.5469      5.4229         0        1.093
+   3            0           4              0             1316       0.4982      0.1615         0        1.021
+   4            0           5              0             1316     0.000655    0.000315         0        1.002
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1315.5119938  Max Abs Gradient Element                 0.0003148442
+Ridge                                               0  Actual Over Pred Change                  1.0024425858
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2631.024       742.8528        8         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_runtime                  1       23.4360        <.0001
+IMP_ss_mean                  1      229.5046        <.0001
+R                            1       13.3086        0.0003
+genre_AnimationManga         1       12.0738        0.0005
+genre_DramaTele              1       23.6643        <.0001
+genre_FitnessSports          1        5.7701        0.0163
+genre_HistDocument           1       78.4125        <.0001
+tomatometer_count            1       62.4368        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -4.0787      0.5694         51.30        <.0001                       0.017
+IMP_runtime                  1      0.0159     0.00328         23.44        <.0001          0.1639       1.016
+IMP_ss_mean                  1      5.2574      0.3470        229.50        <.0001          0.5059     191.985
+R                      0     1      0.2018      0.0553         13.31        0.0003                       1.224
+genre_AnimationManga   0     1     -0.4702      0.1353         12.07        0.0005                       0.625
+genre_DramaTele        0     1     -0.2638      0.0542         23.66        <.0001                       0.768
+genre_FitnessSports    0     1     -0.9357      0.3895          5.77        0.0163                       0.392
+genre_HistDocument     0     1     -0.6804      0.0768         78.41        <.0001                       0.506
+tomatometer_count            1     0.00563    0.000712         62.44        <.0001          0.2607       1.006
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_runtime                         1.016
+IMP_ss_mean                       191.985
+R                      0 vs 1       1.497
+genre_AnimationManga   0 vs 1       0.390
+genre_DramaTele        0 vs 1       0.590
+genre_FitnessSports    0 vs 1       0.154
+genre_HistDocument     0 vs 1       0.256
+tomatometer_count                   1.006
+ 
+ 
+Step 9: Effect genre_Horror entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates              10
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 201.49138638
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             1334        353.2     40.2515         0        1.100
+   2            0           3              0             1313      21.1780      5.7376         0        1.095
+   3            0           4              0             1312       0.5381      0.1817         0        1.022
+   4            0           5              0             1312     0.000722    0.000344         0        1.002
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1311.9867544  Max Abs Gradient Element                 0.0003441037
+Ridge                                               0  Actual Over Pred Change                  1.0022142847
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2623.974       749.9033        9         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_runtime                  1       21.5628        <.0001
+IMP_ss_mean                  1      222.6132        <.0001
+R                            1       12.7715        0.0004
+genre_AnimationManga         1        9.6652        0.0019
+genre_DramaTele              1       16.0001        <.0001
+genre_FitnessSports          1        5.7086        0.0169
+genre_HistDocument           1       65.6615        <.0001
+genre_Horror                 1        6.7592        0.0093
+tomatometer_count            1       61.8467        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -4.2431      0.5733         54.77        <.0001                       0.014
+IMP_runtime                  1      0.0152     0.00328         21.56        <.0001          0.1571       1.015
+IMP_ss_mean                  1      5.1903      0.3479        222.61        <.0001          0.4994     179.520
+R                      0     1      0.1982      0.0554         12.77        0.0004                       1.219
+genre_AnimationManga   0     1     -0.4228      0.1360          9.67        0.0019                       0.655
+genre_DramaTele        0     1     -0.2245      0.0561         16.00        <.0001                       0.799
+genre_FitnessSports    0     1     -0.9294      0.3890          5.71        0.0169                       0.395
+genre_HistDocument     0     1     -0.6357      0.0785         65.66        <.0001                       0.530
+genre_Horror           0     1      0.2444      0.0940          6.76        0.0093                       1.277
+tomatometer_count            1     0.00560    0.000712         61.85        <.0001          0.2594       1.006
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_runtime                         1.015
+IMP_ss_mean                       179.520
+R                      0 vs 1       1.486
+genre_AnimationManga   0 vs 1       0.429
+genre_DramaTele        0 vs 1       0.638
+genre_FitnessSports    0 vs 1       0.156
+genre_HistDocument     0 vs 1       0.280
+genre_Horror           0 vs 1       1.630
+tomatometer_count                   1.006
+ 
+ 
+Step 10: Effect genre_ThrillMysSusp entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates              11
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 201.49138638
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             1332        355.3     40.2797         0        1.101
+   2            0           3              0             1310      21.3874      5.7452         0        1.096
+   3            0           4              0             1310       0.5477      0.1832         0        1.022
+   4            0           5              0             1310     0.000725    0.000338         0        1.002
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1309.7129749  Max Abs Gradient Element                 0.0003382194
+Ridge                                               0  Actual Over Pred Change                  1.0020868977
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2619.426       754.4508       10         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_runtime                  1       21.9117        <.0001
+IMP_ss_mean                  1      218.1116        <.0001
+R                            1       11.3748        0.0007
+genre_AnimationManga         1        8.7551        0.0031
+genre_DramaTele              1       15.2864        <.0001
+genre_FitnessSports          1        5.6411        0.0175
+genre_HistDocument           1       59.6636        <.0001
+genre_Horror                 1        5.9273        0.0149
+genre_ThrillMysSusp          1        4.5022        0.0339
+tomatometer_count            1       60.9114        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -4.3428      0.5758         56.88        <.0001                       0.013
+IMP_runtime                  1      0.0154     0.00328         21.91        <.0001          0.1585       1.015
+IMP_ss_mean                  1      5.1474      0.3485        218.11        <.0001          0.4953     171.977
+R                      0     1      0.1880      0.0557         11.37        0.0007                       1.207
+genre_AnimationManga   0     1     -0.4034      0.1363          8.76        0.0031                       0.668
+genre_DramaTele        0     1     -0.2198      0.0562         15.29        <.0001                       0.803
+genre_FitnessSports    0     1     -0.9224      0.3884          5.64        0.0175                       0.398
+genre_HistDocument     0     1     -0.6118      0.0792         59.66        <.0001                       0.542
+genre_Horror           0     1      0.2291      0.0941          5.93        0.0149                       1.257
+genre_ThrillMysSusp    0     1      0.1425      0.0672          4.50        0.0339                       1.153
+tomatometer_count            1     0.00555    0.000711         60.91        <.0001          0.2572       1.006
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_runtime                         1.015
+IMP_ss_mean                       171.977
+R                      0 vs 1       1.456
+genre_AnimationManga   0 vs 1       0.446
+genre_DramaTele        0 vs 1       0.644
+genre_FitnessSports    0 vs 1       0.158
+genre_HistDocument     0 vs 1       0.294
+genre_Horror           0 vs 1       1.581
+genre_ThrillMysSusp    0 vs 1       1.330
+tomatometer_count                   1.006
+ 
+ 
+Step 11: Effect genre_Sci_fi entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates              12
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 201.49138638
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             1330        356.9     40.1864         0        1.100
+   2            0           3              0             1309      21.4181      5.7184         0        1.095
+   3            0           4              0             1308       0.5465      0.1822         0        1.022
+   4            0           5              0             1308     0.000718    0.000335         0        1.002
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1308.0614476  Max Abs Gradient Element                 0.0003351272
+Ridge                                               0  Actual Over Pred Change                  1.0020707579
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2616.123       757.7539       11         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_runtime                  1       22.1293        <.0001
+IMP_ss_mean                  1      214.6239        <.0001
+R                            1       12.7406        0.0004
+genre_AnimationManga         1        8.5593        0.0034
+genre_DramaTele              1       13.6837        0.0002
+genre_FitnessSports          1        5.5861        0.0181
+genre_HistDocument           1       55.9283        <.0001
+genre_Horror                 1        5.7403        0.0166
+genre_Sci_fi                 1        3.2468        0.0716
+genre_ThrillMysSusp          1        4.1815        0.0409
+tomatometer_count            1       64.0343        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -4.5011      0.5828         59.65        <.0001                       0.011
+IMP_runtime                  1      0.0154     0.00328         22.13        <.0001          0.1593       1.016
+IMP_ss_mean                  1      5.1110      0.3489        214.62        <.0001          0.4918     165.837
+R                      0     1      0.2007      0.0562         12.74        0.0004                       1.222
+genre_AnimationManga   0     1     -0.3999      0.1367          8.56        0.0034                       0.670
+genre_DramaTele        0     1     -0.2091      0.0565         13.68        0.0002                       0.811
+genre_FitnessSports    0     1     -0.9172      0.3881          5.59        0.0181                       0.400
+genre_HistDocument     0     1     -0.5957      0.0797         55.93        <.0001                       0.551
+genre_Horror           0     1      0.2259      0.0943          5.74        0.0166                       1.253
+genre_Sci_fi           0     1      0.1687      0.0936          3.25        0.0716                       1.184
+genre_ThrillMysSusp    0     1      0.1377      0.0673          4.18        0.0409                       1.148
+tomatometer_count            1     0.00581    0.000726         64.03        <.0001          0.2692       1.006
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_runtime                         1.016
+IMP_ss_mean                       165.837
+R                      0 vs 1       1.494
+genre_AnimationManga   0 vs 1       0.449
+genre_DramaTele        0 vs 1       0.658
+genre_FitnessSports    0 vs 1       0.160
+genre_HistDocument     0 vs 1       0.304
+genre_Horror           0 vs 1       1.571
+genre_Sci_fi           0 vs 1       1.401
+genre_ThrillMysSusp    0 vs 1       1.317
+tomatometer_count                   1.006
+ 
+ 
+Step 12: Effect genre_Fantasy entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates              13
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 201.49138638
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             1328        358.7     40.2109         0        1.101
+   2            0           3              0             1307      21.7475      5.7185         0        1.096
+   3            0           4              0             1306       0.5856      0.1705         0        1.031
+   4            0           5              0             1306       0.0104     0.00571         0        1.239
+   5            0           6              0             1306      0.00349     0.00202         0        1.264
+   6            0           7              0             1306      0.00128    0.000742         0        1.264
+ 
+                                            Optimization Results
+ 
+Iterations                                          6  Function Calls                                      9
+Hessian Calls                                       7  Active Constraints                                  0
+Objective Function                       1305.9267255  Max Abs Gradient Element                 0.0007417377
+Ridge                                               0  Actual Over Pred Change                  1.2639804698
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2611.853       762.0233       12         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_runtime                  1       23.6467        <.0001
+IMP_ss_mean                  1      214.7186        <.0001
+R                            1       12.5435        0.0004
+genre_AnimationManga         1        8.8699        0.0029
+genre_DramaTele              1       13.9683        0.0002
+genre_Fantasy                1        0.0633        0.8014
+genre_FitnessSports          1        5.5701        0.0183
+genre_HistDocument           1       56.9480        <.0001
+genre_Horror                 1        5.5211        0.0188
+genre_Sci_fi                 1        0.0680        0.7943
+genre_ThrillMysSusp          1        4.1039        0.0428
+tomatometer_count            1       63.3012        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -4.5519      0.5840         60.74        <.0001                       0.011
+IMP_runtime                  1      0.0161     0.00330         23.65        <.0001          0.1657       1.016
+IMP_ss_mean                  1      5.1189      0.3493        214.72        <.0001          0.4925     167.145
+R                      0     1      0.1993      0.0563         12.54        0.0004                       1.221
+genre_AnimationManga   0     1     -0.4075      0.1368          8.87        0.0029                       0.665
+genre_DramaTele        0     1     -0.2115      0.0566         13.97        0.0002                       0.809
+genre_Fantasy          0     1     -4.6204     18.3660          0.06        0.8014                       0.010
+genre_FitnessSports    0     1     -0.9162      0.3882          5.57        0.0183                       0.400
+genre_HistDocument     0     1     -0.6020      0.0798         56.95        <.0001                       0.548
+genre_Horror           0     1      0.2217      0.0944          5.52        0.0188                       1.248
+genre_Sci_fi           0     1      4.7879     18.3662          0.07        0.7943                     120.050
+genre_ThrillMysSusp    0     1      0.1365      0.0674          4.10        0.0428                       1.146
+tomatometer_count            1     0.00578    0.000727         63.30        <.0001          0.2678       1.006
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_runtime                         1.016
+IMP_ss_mean                       167.145
+R                      0 vs 1       1.490
+genre_AnimationManga   0 vs 1       0.443
+genre_DramaTele        0 vs 1       0.655
+genre_Fantasy          0 vs 1      <0.001
+genre_FitnessSports    0 vs 1       0.160
+genre_HistDocument     0 vs 1       0.300
+genre_Horror           0 vs 1       1.558
+genre_Sci_fi           0 vs 1     999.000
+genre_ThrillMysSusp    0 vs 1       1.314
+tomatometer_count                   1.006
+ 
+ 
+Step 13: Effect genre_Fantasy removed.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates              12
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       1686.9383922
+Max Abs Gradient Element                 201.49138638
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             1330        356.9     40.1864         0        1.100
+   2            0           3              0             1309      21.4181      5.7184         0        1.095
+   3            0           4              0             1308       0.5465      0.1822         0        1.022
+   4            0           5              0             1308     0.000718    0.000335         0        1.002
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1308.0614476  Max Abs Gradient Element                 0.0003351272
+Ridge                                               0  Actual Over Pred Change                  1.0020707579
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2616.123       757.7539       11         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_runtime                  1       22.1293        <.0001
+IMP_ss_mean                  1      214.6239        <.0001
+R                            1       12.7406        0.0004
+genre_AnimationManga         1        8.5593        0.0034
+genre_DramaTele              1       13.6837        0.0002
+genre_FitnessSports          1        5.5861        0.0181
+genre_HistDocument           1       55.9283        <.0001
+genre_Horror                 1        5.7403        0.0166
+genre_Sci_fi                 1        3.2468        0.0716
+genre_ThrillMysSusp          1        4.1815        0.0409
+tomatometer_count            1       64.0343        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -4.5011      0.5828         59.65        <.0001                       0.011
+IMP_runtime                  1      0.0154     0.00328         22.13        <.0001          0.1593       1.016
+IMP_ss_mean                  1      5.1110      0.3489        214.62        <.0001          0.4918     165.837
+R                      0     1      0.2007      0.0562         12.74        0.0004                       1.222
+genre_AnimationManga   0     1     -0.3999      0.1367          8.56        0.0034                       0.670
+genre_DramaTele        0     1     -0.2091      0.0565         13.68        0.0002                       0.811
+genre_FitnessSports    0     1     -0.9172      0.3881          5.59        0.0181                       0.400
+genre_HistDocument     0     1     -0.5957      0.0797         55.93        <.0001                       0.551
+genre_Horror           0     1      0.2259      0.0943          5.74        0.0166                       1.253
+genre_Sci_fi           0     1      0.1687      0.0936          3.25        0.0716                       1.184
+genre_ThrillMysSusp    0     1      0.1377      0.0673          4.18        0.0409                       1.148
+tomatometer_count            1     0.00581    0.000726         64.03        <.0001          0.2692       1.006
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_runtime                         1.016
+IMP_ss_mean                       165.837
+R                      0 vs 1       1.494
+genre_AnimationManga   0 vs 1       0.449
+genre_DramaTele        0 vs 1       0.658
+genre_FitnessSports    0 vs 1       0.160
+genre_HistDocument     0 vs 1       0.304
+genre_Horror           0 vs 1       1.571
+genre_Sci_fi           0 vs 1       1.401
+genre_ThrillMysSusp    0 vs 1       1.317
+tomatometer_count                   1.006
+ 
+ 
+NOTE: Model building terminates because the last effect entered is removed by the Wald test criterion.
+ 
+ 
+                                               Summary of Stepwise Selection
+ 
+                           Effect                            Number         Score          Wald                  Validation
+    Step    Entered                 Removed            DF        In    Chi-Square    Chi-Square    Pr > ChiSq    Error Rate
+ 
+       1    IMP_ss_mean                                 1         1      439.6179                      <.0001        2976.0
+       2    tomatometer_count                           1         2       84.2763                      <.0001        2891.0
+       3    genre_HistDocument                          1         3       66.2493                      <.0001        2802.5
+       4    IMP_runtime                                 1         4       30.6054                      <.0001        2762.4
+       5    genre_DramaTele                             1         5       16.9717                      <.0001        2766.7
+       6    R                                           1         6       17.5402                      <.0001        2739.4
+       7    genre_AnimationManga                        1         7       12.5620                      0.0004        2729.7
+       8    genre_FitnessSports                         1         8        7.0562                      0.0079        2735.2
+       9    genre_Horror                                1         9        6.8292                      0.0090        2718.2
+      10    genre_ThrillMysSusp                         1        10        4.5159                      0.0336        2716.2
+      11    genre_Sci_fi                                1        11        3.2608                      0.0710        2708.8
+      12    genre_Fantasy                               1        12        7.3191                      0.0068        2740.2
+      13                            genre_Fantasy       1        11                      0.0633        0.8014        2708.8
+ 
+ 
+The selected model, based on the error rate for the validation data, is the model trained in Step 11. It consists of the following effects:
+ 
+Intercept  IMP_runtime  IMP_ss_mean  R  genre_AnimationManga  genre_DramaTele  genre_FitnessSports  genre_HistDocument  genre_Horror  genre_Sci_fi  genre_ThrillMysSusp  tomatometer_count
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+   3373.877        2616.123       757.7539       11         <.0001
+ 
+ 
+                Type 3 Analysis of Effects
+ 
+                                        Wald
+Effect                      DF    Chi-Square    Pr > ChiSq
+ 
+IMP_runtime                  1       22.1293        <.0001
+IMP_ss_mean                  1      214.6239        <.0001
+R                            1       12.7406        0.0004
+genre_AnimationManga         1        8.5593        0.0034
+genre_DramaTele              1       13.6837        0.0002
+genre_FitnessSports          1        5.5861        0.0181
+genre_HistDocument           1       55.9283        <.0001
+genre_Horror                 1        5.7403        0.0166
+genre_Sci_fi                 1        3.2468        0.0716
+genre_ThrillMysSusp          1        4.1815        0.0409
+tomatometer_count            1       64.0343        <.0001
+ 
+ 
+                                   Analysis of Maximum Likelihood Estimates
+ 
+                                              Standard          Wald                  Standardized
+Parameter                   DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                    1     -4.5011      0.5828         59.65        <.0001                       0.011
+IMP_runtime                  1      0.0154     0.00328         22.13        <.0001          0.1593       1.016
+IMP_ss_mean                  1      5.1110      0.3489        214.62        <.0001          0.4918     165.837
+R                      0     1      0.2007      0.0562         12.74        0.0004                       1.222
+genre_AnimationManga   0     1     -0.3999      0.1367          8.56        0.0034                       0.670
+genre_DramaTele        0     1     -0.2091      0.0565         13.68        0.0002                       0.811
+genre_FitnessSports    0     1     -0.9172      0.3881          5.59        0.0181                       0.400
+genre_HistDocument     0     1     -0.5957      0.0797         55.93        <.0001                       0.551
+genre_Horror           0     1      0.2259      0.0943          5.74        0.0166                       1.253
+genre_Sci_fi           0     1      0.1687      0.0936          3.25        0.0716                       1.184
+genre_ThrillMysSusp    0     1      0.1377      0.0673          4.18        0.0409                       1.148
+tomatometer_count            1     0.00581    0.000726         64.03        <.0001          0.2692       1.006
+ 
+ 
+          Odds Ratio Estimates
+ 
+                                    Point
+Effect                           Estimate
+ 
+IMP_runtime                         1.016
+IMP_ss_mean                       165.837
+R                      0 vs 1       1.494
+genre_AnimationManga   0 vs 1       0.449
+genre_DramaTele        0 vs 1       0.658
+genre_FitnessSports    0 vs 1       0.160
+genre_HistDocument     0 vs 1       0.304
+genre_Horror           0 vs 1       1.571
+genre_Sci_fi           0 vs 1       1.401
+genre_ThrillMysSusp    0 vs 1       1.317
+tomatometer_count                   1.006
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Fit Statistics
+ 
+Target=audience_score_positive Target Label=' '
+ 
+   Fit
+Statistics    Statistics Label                    Train    Validation
+ 
+ _AIC_        Akaike's Information Criterion    2640.12          .
+ _ASE_        Average Squared Error                0.18         0.18
+ _AVERR_      Average Error Function               0.54         0.56
+ _DFE_        Degrees of Freedom for Error      2426.00          .
+ _DFM_        Model Degrees of Freedom            12.00          .
+ _DFT_        Total Degrees of Freedom          2438.00          .
+ _DIV_        Divisor for ASE                   4876.00      4880.00
+ _ERR_        Error Function                    2616.12      2708.79
+ _FPE_        Final Prediction Error               0.18          .
+ _MAX_        Maximum Absolute Error               0.98         0.99
+ _MSE_        Mean Square Error                    0.18         0.18
+ _NOBS_       Sum of Frequencies                2438.00      2440.00
+ _NW_         Number of Estimate Weights          12.00          .
+ _RASE_       Root Average Sum of Squares          0.42         0.43
+ _RFPE_       Root Final Prediction Error          0.43          .
+ _RMSE_       Root Mean Squared Error              0.42         0.43
+ _SBC_        Schwarz's Bayesian Criterion      2709.71          .
+ _SSE_        Sum of Squared Errors              872.45       900.04
+ _SUMW_       Sum of Case Weights Times Freq    4876.00      4880.00
+ _MISC_       Misclassification Rate               0.27         0.27
+ 
+ 
+ 
+ 
+Classification Table
+ 
+Data Role=TRAIN Target Variable=audience_score_positive Target Label=' '
+ 
+                       Target        Outcome     Frequency       Total
+Target    Outcome    Percentage    Percentage      Count      Percentage
+ 
+FALSE      FALSE       74.8815       74.1204        948         38.8843
+TRUE       FALSE       25.1185       27.4374        318         13.0435
+FALSE      TRUE        28.2423       25.8796        331         13.5767
+TRUE       TRUE        71.7577       72.5626        841         34.4955
+ 
+ 
+Data Role=VALIDATE Target Variable=audience_score_positive Target Label=' '
+ 
+                       Target        Outcome     Frequency       Total
+Target    Outcome    Percentage    Percentage      Count      Percentage
+ 
+FALSE      FALSE       74.9801       73.8077        944         38.6885
+TRUE       FALSE       25.0199       27.1318        315         12.9098
+FALSE      TRUE        28.3658       26.1923        335         13.7295
+TRUE       TRUE        71.6342       72.8682        846         34.6721
+ 
+ 
+ 
+ 
+Event Classification Table
+ 
+Data Role=TRAIN Target=audience_score_positive Target Label=' '
+ 
+  False       True        False       True
+Negative    Negative    Positive    Positive
+ 
+   318         948         331         841
+ 
+ 
+Data Role=VALIDATE Target=audience_score_positive Target Label=' '
+ 
+  False       True        False       True
+Negative    Negative    Positive    Positive
+ 
+   315         944         335         846
+ 
+ 
+ 
+ 
+Assessment Score Rankings
+ 
+Data Role=TRAIN Target Variable=audience_score_positive Target Label=' '
+ 
+                                                                                    Mean
+                            Cumulative       %      Cumulative     Number of     Posterior
+Depth      Gain     Lift       Lift      Response   % Response   Observations   Probability
+ 
+   5    100.008   2.00008     2.00008     95.0820     95.0820         122         0.91668
+  10     84.491   1.68973     1.84491     80.3279     87.7049         122         0.85170
+  15     83.916   1.82766     1.83916     86.8852     87.4317         122         0.80523
+  20     84.060   1.84491     1.84060     87.7049     87.5000         122         0.76489
+  25     79.663   1.62076     1.79663     77.0492     85.4098         122         0.72488
+  30     73.858   1.44834     1.73858     68.8525     82.6503         122         0.67922
+  35     65.771   1.17246     1.65771     55.7377     78.8056         122         0.63535
+  40     61.429   1.31040     1.61429     62.2951     76.7418         122         0.59287
+  45     55.179   1.05177     1.55179     50.0000     73.7705         122         0.54963
+  50     48.921   0.92138     1.48921     43.8017     70.7957         121         0.50535
+  55     42.903   0.82762     1.42903     39.3443     67.9344         122         0.46128
+  60     38.175   0.86211     1.38175     40.9836     65.6869         122         0.41462
+  65     32.715   0.67244     1.32715     31.9672     63.0915         122         0.36655
+  70     26.927   0.51726     1.26927     24.5902     60.3398         122         0.31577
+  75     22.486   0.60347     1.22486     28.6885     58.2285         122         0.26505
+  80     17.630   0.44829     1.17630     21.3115     55.9200         122         0.21985
+  85     12.838   0.36208     1.12838     17.2131     53.6421         122         0.17527
+  90      8.579   0.36208     1.08579     17.2131     51.6173         122         0.13231
+  95      4.314   0.27587     1.04314     13.1148     49.5900         122         0.08903
+ 100      0.000   0.17385     1.00000      8.2645     47.5390         121         0.03891
+ 
+ 
+Data Role=VALIDATE Target Variable=audience_score_positive Target Label=' '
+ 
+                                                                                    Mean
+                            Cumulative       %      Cumulative     Number of     Posterior
+Depth     Gain      Lift       Lift      Response   % Response   Observations   Probability
+ 
+   5    89.4918   1.89492     1.89492     90.1639     90.1639         122         0.91547
+  10    85.1852   1.80879     1.85185     86.0656     88.1148         122         0.84699
+  15    80.8786   1.72265     1.80879     81.9672     86.0656         122         0.80223
+  20    76.1413   1.61929     1.76141     77.0492     83.8115         122         0.76179
+  25    70.1981   1.46425     1.70198     69.6721     80.9836         122         0.72074
+  30    67.0973   1.51593     1.67097     72.1311     79.5082         122         0.68115
+  35    61.6833   1.29199     1.61683     61.4754     76.9321         122         0.63906
+  40    57.8381   1.30922     1.57838     62.2951     75.1025         122         0.59454
+  45    54.4645   1.27476     1.54465     60.6557     73.4973         122         0.55310
+  50    49.3540   1.03359     1.49354     49.1803     71.0656         122         0.50913
+  55    44.0764   0.91301     1.44076     43.4426     68.5544         122         0.45976
+  60    38.3864   0.75797     1.38386     36.0656     65.8470         122         0.41457
+  65    31.8492   0.53402     1.31849     25.4098     62.7364         122         0.36466
+  70    27.4763   0.70629     1.27476     33.6066     60.6557         122         0.31545
+  75    21.3896   0.36176     1.21390     17.2131     57.7596         122         0.26849
+  80    16.1714   0.37898     1.16171     18.0328     55.2766         122         0.22655
+  85    12.1751   0.48234     1.12175     22.9508     53.3751         122         0.18204
+  90     8.2400   0.41344     1.08240     19.6721     51.5027         122         0.13632
+  95     4.0845   0.29285     1.04085     13.9344     49.5255         122         0.08992
+ 100     0.0000   0.22394     1.00000     10.6557     47.5820         122         0.04051
+ 
+ 
+ 
+ 
+Assessment Score Distribution
+ 
+Data Role=TRAIN Target Variable=audience_score_positive Target Label=' '
+ 
+ Posterior     Number                     Mean
+Probability      of      Number of     Posterior
+   Range       Events    Nonevents    Probability    Percentage
+ 
+ 0.95-1.00        17          0         0.96615        0.69729
+ 0.90-0.95        55          2         0.92535        2.33798
+ 0.85-0.90        97         18         0.87403        4.71698
+ 0.80-0.85       112         20         0.82308        5.41427
+ 0.75-0.80       127         16         0.77667        5.86546
+ 0.70-0.75       118         37         0.72680        6.35767
+ 0.65-0.70        86         42         0.67454        5.25021
+ 0.60-0.65        84         63         0.62602        6.02953
+ 0.55-0.60        88         58         0.57459        5.98852
+ 0.50-0.55        57         75         0.52438        5.41427
+ 0.45-0.50        59         84         0.47446        5.86546
+ 0.40-0.45        50         72         0.42477        5.00410
+ 0.35-0.40        44         87         0.37518        5.37326
+ 0.30-0.35        30         82         0.32538        4.59393
+ 0.25-0.30        35         90         0.27528        5.12715
+ 0.20-0.25        30        110         0.22516        5.74241
+ 0.15-0.20        26        113         0.17440        5.70139
+ 0.10-0.15        24        120         0.12468        5.90648
+ 0.05-0.10        14        113         0.07595        5.20919
+ 0.00-0.05         6         77         0.02943        3.40443
+ 
+ 
+Data Role=VALIDATE Target Variable=audience_score_positive Target Label=' '
+ 
+ Posterior     Number                     Mean
+Probability      of      Number of     Posterior
+   Range       Events    Nonevents    Probability    Percentage
+ 
+ 0.95-1.00        19          2         0.96726        0.86066
+ 0.90-0.95        43          6         0.92562        2.00820
+ 0.85-0.90        95         12         0.87311        4.38525
+ 0.80-0.85       113         21         0.82283        5.49180
+ 0.75-0.80       116         27         0.77755        5.86066
+ 0.70-0.75       111         49         0.72515        6.55738
+ 0.65-0.70       101         44         0.67567        5.94262
+ 0.60-0.65        85         52         0.62690        5.61475
+ 0.55-0.60        92         59         0.57528        6.18852
+ 0.50-0.55        71         63         0.52577        5.49180
+ 0.45-0.50        63         64         0.47433        5.20492
+ 0.40-0.45        44         90         0.42492        5.49180
+ 0.35-0.40        35         86         0.37393        4.95902
+ 0.30-0.35        37         87         0.32422        5.08197
+ 0.25-0.30        27        101         0.27557        5.24590
+ 0.20-0.25        30        122         0.22623        6.22951
+ 0.15-0.20        32        102         0.17418        5.49180
+ 0.10-0.15        22        110         0.12416        5.40984
+ 0.05-0.10        14        114         0.07450        5.24590
+ 0.00-0.05        11         68         0.03100        3.23770

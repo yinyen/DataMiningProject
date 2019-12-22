@@ -1,0 +1,170 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+ASSESS       NOMINAL            1   
+ID           INTERVAL           1   
+ID           NOMINAL            1   
+INPUT        BINARY            25   
+INPUT        INTERVAL          13   
+REJECTED     BINARY             1   
+REJECTED     INTERVAL           3   
+TARGET       BINARY             1   
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+Oblique Principal Component Cluster Analysis
+
+Observations           2438    Proportion          0
+Variables                13    Maxeigen            1
+
+
+Clustering algorithm converged.                                            
+
+
+                      Cluster Summary for 1 Cluster
+ 
+                        Cluster    Variation    Proportion        Second
+Cluster    Members    Variation    Explained     Explained    Eigenvalue
+------------------------------------------------------------------------
+      1         13           13     5.155923        0.3966        2.9414
+
+Total variation explained = 5.155923 Proportion = 0.3966
+
+Cluster 1 will be split because it has the largest second eigenvalue, 2.941404, which is greater than the MAXEIGEN=1 value.
+
+
+Clustering algorithm converged.                                            
+
+
+                     Cluster Summary for 2 Clusters
+ 
+                        Cluster    Variation    Proportion        Second
+Cluster    Members    Variation    Explained     Explained    Eigenvalue
+------------------------------------------------------------------------
+      1          8            8     5.143174        0.6429        1.3830
+      2          5            5     2.925622        0.5851        1.1819
+
+Total variation explained = 8.068796 Proportion = 0.6207
+
+
+                                         R-squared with
+2 Clusters                             ------------------
+                                           Own       Next    1-R**2    Variable
+Cluster       Variable                 Cluster    Closest     Ratio    Label
+------------------------------------------------------------------------------------------------
+Cluster 1     IMP_domestic_gross        0.8550     0.0001    0.1450    Imputed domestic_gross   
+              IMP_domestic_opening      0.7965     0.0003    0.2035    Imputed domestic_opening 
+              IMP_foreign_gross         0.7849     0.0002    0.2152    Imputed foreign_gross    
+              IMP_runtime               0.1260     0.0011    0.8750    Imputed runtime          
+              IMP_ss_count              0.5762     0.0095    0.4279    Imputed ss_count         
+              IMP_total_gross           0.8606     0.0002    0.1394    Imputed total_gross      
+              IMP_user_rating_count     0.5685     0.0000    0.4315    Imputed user_rating_count
+              tomatometer_count         0.5755     0.0097    0.4287                             
+------------------------------------------------------------------------------------------------
+Cluster 2     IMP_ss_mean               0.9674     0.0014    0.0326    Imputed ss_mean          
+              IMP_ss_median             0.5469     0.0023    0.4541    Imputed ss_median        
+              IMP_ss_p25                0.7220     0.0004    0.2781    Imputed ss_p25           
+              IMP_ss_p75                0.1615     0.0027    0.8408    Imputed ss_p75           
+              IMP_ss_std                0.5278     0.0000    0.4722    Imputed ss_std           
+
+Cluster 1 will be split because it has the largest second eigenvalue, 1.382983, which is greater than the MAXEIGEN=1 value.
+
+
+Clustering algorithm converged.                                            
+
+
+                     Cluster Summary for 3 Clusters
+ 
+                        Cluster    Variation    Proportion        Second
+Cluster    Members    Variation    Explained     Explained    Eigenvalue
+------------------------------------------------------------------------
+      1          5            5     4.183281        0.8367        0.5492
+      2          5            5     2.925622        0.5851        1.1819
+      3          3            3     2.241602        0.7472        0.7568
+
+Total variation explained = 9.350505 Proportion = 0.7193
+
+
+                                         R-squared with
+3 Clusters                             ------------------
+                                           Own       Next    1-R**2    Variable
+Cluster       Variable                 Cluster    Closest     Ratio    Label
+------------------------------------------------------------------------------------------------
+Cluster 1     IMP_domestic_gross        0.9333     0.2620    0.0904    Imputed domestic_gross   
+              IMP_domestic_opening      0.8810     0.2304    0.1547    Imputed domestic_opening 
+              IMP_foreign_gross         0.8858     0.2099    0.1445    Imputed foreign_gross    
+              IMP_total_gross           0.9593     0.2425    0.0537    Imputed total_gross      
+              IMP_user_rating_count     0.5239     0.3043    0.6843    Imputed user_rating_count
+------------------------------------------------------------------------------------------------
+Cluster 2     IMP_ss_mean               0.9674     0.0089    0.0328    Imputed ss_mean          
+              IMP_ss_median             0.5469     0.0104    0.4578    Imputed ss_median        
+              IMP_ss_p25                0.7220     0.0052    0.2795    Imputed ss_p25           
+              IMP_ss_p75                0.1615     0.0088    0.8460    Imputed ss_p75           
+              IMP_ss_std                0.5278     0.0001    0.4723    Imputed ss_std           
+------------------------------------------------------------------------------------------------
+Cluster 3     IMP_runtime               0.3672     0.0472    0.6642    Imputed runtime          
+              IMP_ss_count              0.9373     0.3104    0.0910    Imputed ss_count         
+              tomatometer_count         0.9372     0.3097    0.0910                             
+
+Cluster 2 will be split because it has the largest second eigenvalue, 1.181856, which is greater than the MAXEIGEN=1 value.
+
+
+Clustering algorithm converged.                                            
+
+
+                     Cluster Summary for 4 Clusters
+ 
+                        Cluster    Variation    Proportion        Second
+Cluster    Members    Variation    Explained     Explained    Eigenvalue
+------------------------------------------------------------------------
+      1          5            5     4.183281        0.8367        0.5492
+      2          4            4     2.816478        0.7041        0.7952
+      3          3            3     2.241602        0.7472        0.7568
+      4          1            1            1        1.0000              
+
+Total variation explained = 10.24136 Proportion = 0.7878
+
+
+                                         R-squared with
+4 Clusters                             ------------------
+                                           Own       Next    1-R**2    Variable
+Cluster       Variable                 Cluster    Closest     Ratio    Label
+------------------------------------------------------------------------------------------------
+Cluster 1     IMP_domestic_gross        0.9333     0.2620    0.0904    Imputed domestic_gross   
+              IMP_domestic_opening      0.8810     0.2304    0.1547    Imputed domestic_opening 
+              IMP_foreign_gross         0.8858     0.2099    0.1445    Imputed foreign_gross    
+              IMP_total_gross           0.9593     0.2425    0.0537    Imputed total_gross      
+              IMP_user_rating_count     0.5239     0.3043    0.6843    Imputed user_rating_count
+------------------------------------------------------------------------------------------------
+Cluster 2     IMP_ss_mean               0.9378     0.1781    0.0756    Imputed ss_mean          
+              IMP_ss_median             0.5037     0.1360    0.5744    Imputed ss_median        
+              IMP_ss_p25                0.7655     0.0209    0.2395    Imputed ss_p25           
+              IMP_ss_std                0.6094     0.0026    0.3916    Imputed ss_std           
+------------------------------------------------------------------------------------------------
+Cluster 3     IMP_runtime               0.3672     0.0472    0.6642    Imputed runtime          
+              IMP_ss_count              0.9373     0.3104    0.0910    Imputed ss_count         
+              tomatometer_count         0.9372     0.3097    0.0910                             
+------------------------------------------------------------------------------------------------
+Cluster 4     IMP_ss_p75                1.0000     0.0723    0.0000    Imputed ss_p75           
+
+No cluster meets the criterion for splitting.
+
+
+                 Total     Proportion       Minimum       Maximum                  Maximum
+             Variation             of    Proportion        Second      Minimum      1-R**2
+  Number     Explained      Variation     Explained    Eigenvalue    R-squared       Ratio
+      of            by      Explained          by a          in a        for a       for a
+Clusters      Clusters    by Clusters       Cluster       Cluster     Variable    Variable
+------------------------------------------------------------------------------------------
+       1      5.155923         0.3966        0.3966      2.941404       0.0005            
+       2      8.068796         0.6207        0.5851      1.382983       0.1260      0.8750
+       3      9.350505         0.7193        0.5851      1.181856       0.1615      0.8460
+       4     10.241361         0.7878        0.7041      0.795184       0.3672      0.6843

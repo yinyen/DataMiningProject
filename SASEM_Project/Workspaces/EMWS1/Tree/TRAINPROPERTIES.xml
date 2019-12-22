@@ -10,9 +10,9 @@
  ShowNodeId="Y" ShowValid="Y" Pred="N" Target="ALL" Count="Y" ProfitLoss="NONE" PercentCorrect="N"
  AVG="Y" RASE="N" CreateSample="DEFAULT" SampleMethod="RANDOM" SampleSize="10000"
  SampleSeed="12345" ForceRun="N" RunAction="Train" Component="DecisionTree" Criterion="DEFAULT"
- Dummy="N" Predict="Y" ImportedTreeData="" RawCreateTime="1889483113.9" CreateTime="16NOV2019:00:25:14"
- RunId="74ae7740-6d96-4191-88c3-99e5cd58b224" RawLastTimeRun="1889635672.5" RawRunTime="2468.8139999"
- LastTimeRun="17NOV2019:18:47:53" RunTime="0 Hr. 41 Min. 8.81 Sec.">
+ Dummy="N" Predict="Y" ImportedTreeData="" RawCreateTime="1891788275.7" CreateTime="12DEC2019:16:44:36"
+ RunId="034095f0-08cc-4bb1-826e-85afddbffa19" RawLastTimeRun="1892587138.7" RawRunTime="2683.3710001"
+ LastTimeRun="21DEC2019:22:38:59" RunTime="0 Hr. 44 Min. 43.37 Sec.">
 <VARIABLEPROPERTIES/>
 <FILEPROPERTIES ><![CDATA[
 USERTRAINCODE

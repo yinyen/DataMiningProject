@@ -1,0 +1,229 @@
+*------------------------------------------------------------*
+User:                yinyen
+Date:                December 22, 2019
+Time:                16:20:52
+Site:                12600285
+Platform:            X64_8HOME
+Maintenance Release: 9.04.01M3P062415
+EM Version:          14.1
+* 
+*------------------------------------------------------------*
+* Training Log
+Date:                December 22, 2019
+Time:                16:20:48
+*------------------------------------------------------------*
+10866  proc freq data=EMWS1.Drop_VariableSet noprint;
+10867  table ROLE*LEVEL/out=WORK.DropMETA;
+10868  run;
+ 
+NOTE: There were 46 observations read from the data set EMWS1.DROP_VARIABLESET.
+NOTE: The data set WORK.DROPMETA has 8 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.01 seconds
+ 
+ 
+10869  proc print data=WORK.DropMETA label noobs;
+10870  var ROLE LEVEL COUNT;
+10871  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+10872  title9 ' ';
+10873  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+10874  run;
+ 
+NOTE: There were 8 observations read from the data set WORK.DROPMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+ 
+ 
+10875  title10;
+ 
+10876  proc contents data=EMWS1.Impt_TRAIN out=WORK.DROPHIDDENVARS(keep=NAME ROLE) noprint;
+10877  run;
+ 
+WARNING: The variable ROLE in the DROP, KEEP, or RENAME list has never been referenced.
+NOTE: The data set WORK.DROPHIDDENVARS has 59 observations and 1 variables.
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           0.11 seconds
+      cpu time            0.07 seconds
+ 
+ 
+10878  proc sort data=WORK.DROPHIDDENVARS NOTHREADS;
+10879  by NAME;
+10880  run;
+ 
+NOTE: There were 59 observations read from the data set WORK.DROPHIDDENVARS.
+NOTE: The data set WORK.DROPHIDDENVARS has 59 observations and 1 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+10881  proc sort data=EMWS1.Drop_VariableSet out=WORK.SORTEDVARSET NOTHREADS;
+10882  by NAME;
+10883  run;
+ 
+NOTE: There were 46 observations read from the data set EMWS1.DROP_VARIABLESET.
+NOTE: The data set WORK.SORTEDVARSET has 46 observations and 21 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+ 
+ 
+10884  data WORK.DROPHIDDENVARS;
+10885  merge WORK.SORTEDVARSET(in=_a) WORK.DROPHIDDENVARS(in=_b);
+10886  by NAME;
+10887  if _b and ^_a then do;
+10888  ROLE = 'HIDDEN';
+10889  output;
+10890  end;
+10891  run;
+ 
+NOTE: There were 46 observations read from the data set WORK.SORTEDVARSET.
+NOTE: There were 59 observations read from the data set WORK.DROPHIDDENVARS.
+NOTE: The data set WORK.DROPHIDDENVARS has 13 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+ 
+ 
+*------------------------------------------------------------*
+* Score Log
+Date:                December 22, 2019
+Time:                16:20:49
+*------------------------------------------------------------*
+10993  *------------------------------------------------------------*;
+10994  * Drop: Scoring DATA data;
+10995  *------------------------------------------------------------*;
+10996  data EMWS1.Drop_TRAIN
+10997  / view=EMWS1.Drop_TRAIN
+10998  ;
+10999  set EMWS1.Impt_TRAIN
+11000  ;
+11001  run;
+ 
+NOTE: DATA STEP view saved on file EMWS1.DROP_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.IMPT_TRAIN.VIEW used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.12 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.19 seconds
+      cpu time            0.15 seconds
+ 
+ 
+11002  quit;
+ 
+11003  *------------------------------------------------------------*;
+11004  * Drop: Scoring VALIDATE data;
+11005  *------------------------------------------------------------*;
+11006  data EMWS1.Drop_VALIDATE
+11007  / view=EMWS1.Drop_VALIDATE
+11008  ;
+11009  set EMWS1.Impt_VALIDATE
+11010  ;
+11011  run;
+ 
+NOTE: DATA STEP view saved on file EMWS1.DROP_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.IMPT_VALIDATE.VIEW used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.09 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.12 seconds
+ 
+ 
+11012  quit;
+ 
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+11013  data WORK.TEMPDS;
+11014  set EMWS1.Impt_CMeta_TRAIN;
+11015  where
+11016  (
+11017  NAME in(
+11018  "IMP_domestic_gross"
+11019  "IMP_domestic_opening"
+11020  "IMP_foreign_gross"
+11021  "IMP_ss_count"
+11022  "IMP_ss_median"
+11023  "IMP_ss_p25"
+11024  "IMP_ss_p75"
+11025  "IMP_user_rating_count"
+11026  )
+11027  )
+11028  or
+11029  (ROLE ="REJECTED"
+11030  )
+11031  ;
+11032  run;
+ 
+NOTE: There were 12 observations read from the data set EMWS1.IMPT_CMETA_TRAIN.
+      WHERE NAME in ('IMP_domestic_gross', 'IMP_domestic_opening', 'IMP_foreign_gross', 'IMP_ss_count', 'IMP_ss_median', 'IMP_ss_p25', 'IMP_ss_p75', 'IMP_user_rating_count') or (ROLE='REJECTED');
+NOTE: The data set WORK.TEMPDS has 12 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11033  data WORK.TEMPDS;
+11034  set WORK.TEMPDS WORK.DROPHIDDENVARS;
+11035  run;
+ 
+NOTE: There were 12 observations read from the data set WORK.TEMPDS.
+NOTE: There were 13 observations read from the data set WORK.DROPHIDDENVARS.
+NOTE: The data set WORK.TEMPDS has 25 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11036  title10;
+11037  proc freq data=WORK.TEMPDS noprint;
+11038  table ROLE*LEVEL/out=WORK.TEMPDS;
+11039  run;
+ 
+NOTE: There were 25 observations read from the data set WORK.TEMPDS.
+NOTE: The data set WORK.TEMPDS has 4 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11040  proc print data=WORK.TEMPDS noobs;
+11041  var ROLE LEVEL COUNT;
+11042  title9 ' ';
+11043  title10 "%sysfunc(sasmsg(sashelp.dmine, dropVariableSummary_title, NOQUOTE))";
+11044  run;
+ 
+NOTE: There were 4 observations read from the data set WORK.TEMPDS.
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11045  *------------------------------------------------------------*;
+11046  * Drop: Computing metadata for TRAIN data;
+11047  *------------------------------------------------------------*;
+ 
+NOTE: View EMWS1.DROP_TRAIN.VIEW used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.15 seconds
+ 
+NOTE: View EMWS1.DROP_TRAIN.VIEW used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.12 seconds
+ 
+NOTE: View EMWS1.DROP_VALIDATE.VIEW used (Total process time):
+      real time           0.16 seconds
+      cpu time            0.15 seconds
+ 
+*------------------------------------------------------------*
+* Report Log
+Date:                December 22, 2019
+Time:                16:20:52
+*------------------------------------------------------------*

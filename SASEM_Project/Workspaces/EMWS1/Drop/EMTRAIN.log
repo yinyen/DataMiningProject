@@ -1,0 +1,81 @@
+*------------------------------------------------------------*
+* Training Log
+Date:                December 22, 2019
+Time:                16:20:48
+*------------------------------------------------------------*
+10866  proc freq data=EMWS1.Drop_VariableSet noprint;
+10867  table ROLE*LEVEL/out=WORK.DropMETA;
+10868  run;
+
+NOTE: There were 46 observations read from the data set EMWS1.DROP_VARIABLESET.
+NOTE: The data set WORK.DROPMETA has 8 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.01 seconds
+      
+
+10869  proc print data=WORK.DropMETA label noobs;
+10870  var ROLE LEVEL COUNT;
+10871  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+10872  title9 ' ';
+10873  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+10874  run;
+
+NOTE: There were 8 observations read from the data set WORK.DROPMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+10875  title10;
+
+10876  proc contents data=EMWS1.Impt_TRAIN out=WORK.DROPHIDDENVARS(keep=NAME ROLE) noprint;
+10877  run;
+
+WARNING: The variable ROLE in the DROP, KEEP, or RENAME list has never been referenced.
+NOTE: The data set WORK.DROPHIDDENVARS has 59 observations and 1 variables.
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           0.11 seconds
+      cpu time            0.07 seconds
+      
+
+10878  proc sort data=WORK.DROPHIDDENVARS NOTHREADS;
+10879  by NAME;
+10880  run;
+
+NOTE: There were 59 observations read from the data set WORK.DROPHIDDENVARS.
+NOTE: The data set WORK.DROPHIDDENVARS has 59 observations and 1 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+10881  proc sort data=EMWS1.Drop_VariableSet out=WORK.SORTEDVARSET NOTHREADS;
+10882  by NAME;
+10883  run;
+
+NOTE: There were 46 observations read from the data set EMWS1.DROP_VARIABLESET.
+NOTE: The data set WORK.SORTEDVARSET has 46 observations and 21 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+10884  data WORK.DROPHIDDENVARS;
+10885  merge WORK.SORTEDVARSET(in=_a) WORK.DROPHIDDENVARS(in=_b);
+10886  by NAME;
+10887  if _b and ^_a then do;
+10888  ROLE = 'HIDDEN';
+10889  output;
+10890  end;
+10891  run;
+
+NOTE: There were 46 observations read from the data set WORK.SORTEDVARSET.
+NOTE: There were 59 observations read from the data set WORK.DROPHIDDENVARS.
+NOTE: The data set WORK.DROPHIDDENVARS has 13 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
